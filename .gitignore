@@ -1,0 +1,6 @@
+build/
+install/
+log/
+.vscode/
+*.swp
+compile_commands.json
