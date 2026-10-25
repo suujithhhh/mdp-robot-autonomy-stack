@@ -1,0 +1,1849 @@
+{
+ "rows": [
+  {
+   "case": "A_spread_05",
+   "idx": 0,
+   "n_obstacles": 5,
+   "cpp": {
+    "case": "A_spread_05",
+    "kind": "leg",
+    "idx": 0,
+    "valid": true,
+    "reason": "",
+    "cost": 153.05088062083416,
+    "distance": 51.050880620834135,
+    "expansions": 138,
+    "final": [
+     32.79765362875396,
+     57.76149356017797,
+     1.5707963267948966
+    ],
+    "search_us": 837,
+    "time_us": 853,
+    "cmds": [
+     "FL,10",
+     "FR,50",
+     "FL,40"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 153.05088062083416,
+    "distance": 51.050880620834135,
+    "expansions": 138,
+    "final": [
+     32.79765362875396,
+     57.76149356017797,
+     1.5707963267948966
+    ],
+    "time_us": 26374,
+    "cmds": [
+     "MOV,FL,10",
+     "MOV,FR,50",
+     "MOV,FL,40"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 30.919109026963657
+  },
+  {
+   "case": "A_spread_05",
+   "idx": 1,
+   "n_obstacles": 5,
+   "cpp": {
+    "case": "A_spread_05",
+    "kind": "leg",
+    "idx": 1,
+    "valid": true,
+    "reason": "",
+    "cost": 206.82895170443388,
+    "distance": 70.1447826376521,
+    "expansions": 938,
+    "final": [
+     60.71573876805388,
+     24.68823172645114,
+     4.440892098500626e-16
+    ],
+    "search_us": 5496,
+    "time_us": 5513,
+    "cmds": [
+     "FR,30",
+     "BR,20",
+     "FR,60",
+     "FL,20"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 206.82895170443388,
+    "distance": 70.1447826376521,
+    "expansions": 938,
+    "final": [
+     60.71573876805388,
+     24.68823172645114,
+     4.440892098500626e-16
+    ],
+    "time_us": 177739,
+    "cmds": [
+     "MOV,FR,30",
+     "MOV,BR,20",
+     "MOV,FR,60",
+     "MOV,FL,20"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 32.239978233266825
+  },
+  {
+   "case": "A_spread_05",
+   "idx": 2,
+   "n_obstacles": 5,
+   "cpp": {
+    "case": "A_spread_05",
+    "kind": "leg",
+    "idx": 2,
+    "valid": true,
+    "reason": "",
+    "cost": 195.77654070965534,
+    "distance": 93.77654070965534,
+    "expansions": 291,
+    "final": [
+     91.30307516666255,
+     57.386400077539776,
+     0
+    ],
+    "search_us": 1753,
+    "time_us": 1771,
+    "cmds": [
+     "FR,90",
+     "FL,40",
+     "FR,40"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 195.77654070965534,
+    "distance": 93.77654070965534,
+    "expansions": 291,
+    "final": [
+     91.30307516666255,
+     57.386400077539776,
+     0.0
+    ],
+    "time_us": 53706,
+    "cmds": [
+     "MOV,FR,90",
+     "MOV,FL,40",
+     "MOV,FR,40"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 30.32523997741389
+  },
+  {
+   "case": "A_spread_05",
+   "idx": 3,
+   "n_obstacles": 5,
+   "cpp": {
+    "case": "A_spread_05",
+    "kind": "leg",
+    "idx": 3,
+    "valid": true,
+    "reason": "",
+    "cost": 464.16517032814073,
+    "distance": 257.0339023272774,
+    "expansions": 74133,
+    "final": [
+     127.77201831597566,
+     163.41085688480592,
+     3.141592653589793
+    ],
+    "search_us": 474269,
+    "time_us": 474326,
+    "cmds": [
+     "FR,90",
+     "FL,110",
+     "FR,140",
+     "BR,150",
+     "F,10"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 464.16517032814073,
+    "distance": 257.0339023272774,
+    "expansions": 74133,
+    "final": [
+     127.77201831597566,
+     163.41085688480592,
+     3.141592653589793
+    ],
+    "time_us": 17438549,
+    "cmds": [
+     "MOV,FR,90",
+     "MOV,FL,110",
+     "MOV,FR,140",
+     "MOV,BR,150",
+     "MOV,F,10"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 36.76490219806631
+  },
+  {
+   "case": "A_spread_05",
+   "idx": 4,
+   "n_obstacles": 5,
+   "cpp": {
+    "case": "A_spread_05",
+    "kind": "leg",
+    "idx": 4,
+    "valid": true,
+    "reason": "",
+    "cost": 415.3988778840092,
+    "distance": 236.387393890112,
+    "expansions": 48583,
+    "final": [
+     156.83188718518636,
+     100.1322075212266,
+     1.5707963267948974
+    ],
+    "search_us": 304596,
+    "time_us": 304651,
+    "cmds": [
+     "FR,90",
+     "FL,150",
+     "BL,90",
+     "BR,140",
+     "FR,10"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 415.3988778840092,
+    "distance": 236.387393890112,
+    "expansions": 48583,
+    "final": [
+     156.8318871851864,
+     100.13220752122663,
+     1.5707963267948974
+    ],
+    "time_us": 10455363,
+    "cmds": [
+     "MOV,FR,90",
+     "MOV,FL,150",
+     "MOV,BL,90",
+     "MOV,BR,140",
+     "MOV,FR,10"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 2.842170943040401e-14,
+   "speedup": 34.319148796491724
+  },
+  {
+   "case": "A_spread_05",
+   "idx": 5,
+   "n_obstacles": 5,
+   "cpp": {
+    "case": "A_spread_05",
+    "kind": "leg",
+    "idx": 5,
+    "valid": true,
+    "reason": "",
+    "cost": 185.66759368210418,
+    "distance": 80.93091741497706,
+    "expansions": 719,
+    "final": [
+     58.20939910687789,
+     22.4477886971497,
+     0
+    ],
+    "search_us": 4217,
+    "time_us": 4234,
+    "cmds": [
+     "BR,80",
+     "FR,50",
+     "FL,40"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 185.66759368210418,
+    "distance": 80.93091741497706,
+    "expansions": 719,
+    "final": [
+     58.20939910687789,
+     22.4477886971497,
+     0.0
+    ],
+    "time_us": 135064,
+    "cmds": [
+     "MOV,BR,80",
+     "MOV,FR,50",
+     "MOV,FL,40"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 31.899858290033066
+  },
+  {
+   "case": "A_spread_05",
+   "idx": 6,
+   "n_obstacles": 5,
+   "cpp": {
+    "case": "A_spread_05",
+    "kind": "leg",
+    "idx": 6,
+    "valid": true,
+    "reason": "",
+    "cost": 198.00247261124818,
+    "distance": 61.191243574921195,
+    "expansions": 674,
+    "final": [
+     90.16510860542559,
+     52.47858400122344,
+     0
+    ],
+    "search_us": 3914,
+    "time_us": 3928,
+    "cmds": [
+     "BL,10",
+     "FL,50",
+     "FR,50",
+     "BR,10"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 198.00247261124818,
+    "distance": 61.191243574921195,
+    "expansions": 674,
+    "final": [
+     90.16510860542559,
+     52.47858400122344,
+     0.0
+    ],
+    "time_us": 128991,
+    "cmds": [
+     "MOV,BL,10",
+     "MOV,FL,50",
+     "MOV,FR,50",
+     "MOV,BR,10"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 32.83884928716904
+  },
+  {
+   "case": "A_spread_05",
+   "idx": 7,
+   "n_obstacles": 5,
+   "cpp": {
+    "case": "A_spread_05",
+    "kind": "leg",
+    "idx": 7,
+    "valid": true,
+    "reason": "",
+    "cost": 338.79015999242984,
+    "distance": 158.5747229247847,
+    "expansions": 27413,
+    "final": [
+     131.06668483470781,
+     164.39936667482874,
+     -3.141592653589793
+    ],
+    "search_us": 175355,
+    "time_us": 175389,
+    "cmds": [
+     "BR,130",
+     "B,80",
+     "BR,40",
+     "FR,10"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 338.79015999242984,
+    "distance": 158.5747229247847,
+    "expansions": 27413,
+    "final": [
+     131.06668483470781,
+     164.39936667482874,
+     -3.141592653589793
+    ],
+    "time_us": 5963183,
+    "cmds": [
+     "MOV,BR,130",
+     "MOV,B,80",
+     "MOV,BR,40",
+     "MOV,FR,10"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 33.999754830690634
+  },
+  {
+   "case": "A_spread_05",
+   "idx": 8,
+   "n_obstacles": 5,
+   "cpp": {
+    "case": "A_spread_05",
+    "kind": "leg",
+    "idx": 8,
+    "valid": true,
+    "reason": "",
+    "cost": 321.50784357542295,
+    "distance": 150.5695545695508,
+    "expansions": 11865,
+    "final": [
+     156.46631247305132,
+     101.69617364833832,
+     1.5707963267948966
+    ],
+    "search_us": 73402,
+    "time_us": 73436,
+    "cmds": [
+     "BL,10",
+     "FL,80",
+     "FR,30",
+     "FL,200",
+     "BL,10"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 321.50784357542295,
+    "distance": 150.5695545695508,
+    "expansions": 11865,
+    "final": [
+     156.46631247305137,
+     101.69617364833832,
+     1.5707963267948966
+    ],
+    "time_us": 2410412,
+    "cmds": [
+     "MOV,BL,10",
+     "MOV,FL,80",
+     "MOV,FR,30",
+     "MOV,FL,200",
+     "MOV,BL,10"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 5.684341886080802e-14,
+   "speedup": 32.82330192276268
+  },
+  {
+   "case": "A_spread_05",
+   "idx": 9,
+   "n_obstacles": 5,
+   "cpp": {
+    "case": "A_spread_05",
+    "kind": "leg",
+    "idx": 9,
+    "valid": true,
+    "reason": "",
+    "cost": 335.9976331892389,
+    "distance": 156.5152344074314,
+    "expansions": 18102,
+    "final": [
+     36.02845530046079,
+     57.84081533663632,
+     1.5707963267948966
+    ],
+    "search_us": 114787,
+    "time_us": 114861,
+    "cmds": [
+     "BR,80",
+     "B,80",
+     "BL,50",
+     "FL,30"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 335.9976331892389,
+    "distance": 156.5152344074314,
+    "expansions": 18102,
+    "final": [
+     36.02845530046079,
+     57.84081533663632,
+     1.5707963267948966
+    ],
+    "time_us": 3935144,
+    "cmds": [
+     "MOV,BR,80",
+     "MOV,B,80",
+     "MOV,BL,50",
+     "MOV,FL,30"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 34.26005345591628
+  },
+  {
+   "case": "B_clutter_04",
+   "idx": 0,
+   "n_obstacles": 4,
+   "cpp": {
+    "case": "B_clutter_04",
+    "kind": "leg",
+    "idx": 0,
+    "valid": true,
+    "reason": "",
+    "cost": 257.879832325268,
+    "distance": 121.19566325848625,
+    "expansions": 3086,
+    "final": [
+     39.64331385737557,
+     107.04318569640239,
+     -4.440892098500626e-16
+    ],
+    "search_us": 18098,
+    "time_us": 18124,
+    "cmds": [
+     "FR,40",
+     "FL,70",
+     "FR,100",
+     "BR,20"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 257.879832325268,
+    "distance": 121.19566325848625,
+    "expansions": 3086,
+    "final": [
+     39.64331385737557,
+     107.04318569640239,
+     -4.440892098500626e-16
+    ],
+    "time_us": 588606,
+    "cmds": [
+     "MOV,FR,40",
+     "MOV,FL,70",
+     "MOV,FR,100",
+     "MOV,BR,20"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 32.47660560582653
+  },
+  {
+   "case": "B_clutter_04",
+   "idx": 1,
+   "n_obstacles": 4,
+   "cpp": {
+    "case": "B_clutter_04",
+    "kind": "leg",
+    "idx": 1,
+    "valid": true,
+    "reason": "",
+    "cost": 436.6472263872302,
+    "distance": 233.70893738135806,
+    "expansions": 54363,
+    "final": [
+     170.92938086207874,
+     104.57566389967475,
+     -3.141592653589793
+    ],
+    "search_us": 339959,
+    "time_us": 340003,
+    "cmds": [
+     "FR,80",
+     "F,110",
+     "FL,140",
+     "BL,20",
+     "FL,10"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 436.6472263872302,
+    "distance": 233.70893738135806,
+    "expansions": 54363,
+    "final": [
+     170.92938086207874,
+     104.57566389967475,
+     -3.141592653589793
+    ],
+    "time_us": 11443920,
+    "cmds": [
+     "MOV,FR,80",
+     "MOV,F,110",
+     "MOV,FL,140",
+     "MOV,BL,20",
+     "MOV,FL,10"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 33.65829125037132
+  },
+  {
+   "case": "B_clutter_04",
+   "idx": 2,
+   "n_obstacles": 4,
+   "cpp": {
+    "case": "B_clutter_04",
+    "kind": "leg",
+    "idx": 2,
+    "valid": true,
+    "reason": "",
+    "cost": 431.5535805337566,
+    "distance": 227.84315786680216,
+    "expansions": 51405,
+    "final": [
+     103.64680740702639,
+     172.45639526220708,
+     -1.570796326794896
+    ],
+    "search_us": 320294,
+    "time_us": 320339,
+    "cmds": [
+     "FR,20",
+     "F,130",
+     "FR,100",
+     "BR,50",
+     "FR,10"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 431.5535805337566,
+    "distance": 227.84315786680216,
+    "expansions": 51405,
+    "final": [
+     103.64680740702639,
+     172.45639526220708,
+     -1.570796326794896
+    ],
+    "time_us": 10889456,
+    "cmds": [
+     "MOV,FR,20",
+     "MOV,F,130",
+     "MOV,FR,100",
+     "MOV,BR,50",
+     "MOV,FR,10"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 33.99353809557999
+  },
+  {
+   "case": "B_clutter_04",
+   "idx": 3,
+   "n_obstacles": 4,
+   "cpp": {
+    "case": "B_clutter_04",
+    "kind": "leg",
+    "idx": 3,
+    "valid": true,
+    "reason": "",
+    "cost": 259.26352935624914,
+    "distance": 122.45230031992216,
+    "expansions": 2875,
+    "final": [
+     105.97858400122345,
+     40.4151086054256,
+     1.5707963267948966
+    ],
+    "search_us": 17107,
+    "time_us": 17134,
+    "cmds": [
+     "BR,10",
+     "FR,110",
+     "FL,110",
+     "BL,10"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 259.26352935624914,
+    "distance": 122.45230031992216,
+    "expansions": 2875,
+    "final": [
+     105.97858400122345,
+     40.4151086054256,
+     1.5707963267948966
+    ],
+    "time_us": 548772,
+    "cmds": [
+     "MOV,BR,10",
+     "MOV,FR,110",
+     "MOV,FL,110",
+     "MOV,BL,10"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 32.028247928096185
+  },
+  {
+   "case": "B_clutter_04",
+   "idx": 4,
+   "n_obstacles": 4,
+   "cpp": {
+    "case": "B_clutter_04",
+    "kind": "leg",
+    "idx": 4,
+    "valid": true,
+    "reason": "",
+    "cost": 455.61225002110893,
+    "distance": 238.2025363121861,
+    "expansions": 93104,
+    "final": [
+     172.54721276503628,
+     104.04596012278796,
+     -3.141592653589793
+    ],
+    "search_us": 603591,
+    "time_us": 603659,
+    "cmds": [
+     "BR,10",
+     "FR,110",
+     "BR,110",
+     "BL,140",
+     "BR,80",
+     "FR,10"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 455.61225002110893,
+    "distance": 238.2025363121861,
+    "expansions": 93104,
+    "final": [
+     172.54721276503628,
+     104.04596012278796,
+     -3.141592653589793
+    ],
+    "time_us": 20335606,
+    "cmds": [
+     "MOV,BR,10",
+     "MOV,FR,110",
+     "MOV,BR,110",
+     "MOV,BL,140",
+     "MOV,BR,80",
+     "MOV,FR,10"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 33.6872406441385
+  },
+  {
+   "case": "B_clutter_04",
+   "idx": 5,
+   "n_obstacles": 4,
+   "cpp": {
+    "case": "B_clutter_04",
+    "kind": "leg",
+    "idx": 5,
+    "valid": true,
+    "reason": "",
+    "cost": 356.0684433311635,
+    "distance": 146.46803082736415,
+    "expansions": 25043,
+    "final": [
+     104.9955041029556,
+     172.28094819127637,
+     -1.570796326794896
+    ],
+    "search_us": 152105,
+    "time_us": 152140,
+    "cmds": [
+     "BR,10",
+     "FR,120",
+     "BR,100",
+     "BL,10",
+     "BR,40",
+     "FR,10"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 356.0684433311635,
+    "distance": 146.46803082736415,
+    "expansions": 25043,
+    "final": [
+     104.9955041029556,
+     172.28094819127637,
+     -1.570796326794896
+    ],
+    "time_us": 5043696,
+    "cmds": [
+     "MOV,BR,10",
+     "MOV,FR,120",
+     "MOV,BR,100",
+     "MOV,BL,10",
+     "MOV,BR,40",
+     "MOV,FR,10"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 33.151676087813854
+  },
+  {
+   "case": "B_clutter_04",
+   "idx": 6,
+   "n_obstacles": 4,
+   "cpp": {
+    "case": "B_clutter_04",
+    "kind": "leg",
+    "idx": 6,
+    "valid": true,
+    "reason": "",
+    "cost": 455.61225002110893,
+    "distance": 238.2025363121861,
+    "expansions": 79748,
+    "final": [
+     104.04596012278787,
+     37.452787234963765,
+     1.5707963267948966
+    ],
+    "search_us": 519968,
+    "time_us": 520019,
+    "cmds": [
+     "BR,10",
+     "FR,110",
+     "BR,110",
+     "BL,140",
+     "BR,80",
+     "FR,10"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 455.61225002110893,
+    "distance": 238.2025363121861,
+    "expansions": 79748,
+    "final": [
+     104.04596012278787,
+     37.452787234963765,
+     1.5707963267948966
+    ],
+    "time_us": 17015152,
+    "cmds": [
+     "MOV,BR,10",
+     "MOV,FR,110",
+     "MOV,BR,110",
+     "MOV,BL,140",
+     "MOV,BR,80",
+     "MOV,FR,10"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 32.72025060622785
+  },
+  {
+   "case": "B_clutter_04",
+   "idx": 7,
+   "n_obstacles": 4,
+   "cpp": {
+    "case": "B_clutter_04",
+    "kind": "leg",
+    "idx": 7,
+    "valid": true,
+    "reason": "",
+    "cost": 340.4100408078499,
+    "distance": 135.88838910456846,
+    "expansions": 25638,
+    "final": [
+     37.645846165736174,
+     104.73405073417308,
+     0
+    ],
+    "search_us": 161145,
+    "time_us": 161175,
+    "cmds": [
+     "BL,10",
+     "FL,40",
+     "F,40",
+     "FR,80",
+     "BR,60"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 340.4100408078499,
+    "distance": 135.88838910456846,
+    "expansions": 25638,
+    "final": [
+     37.645846165736174,
+     104.73405073417308,
+     0.0
+    ],
+    "time_us": 5302827,
+    "cmds": [
+     "MOV,BL,10",
+     "MOV,FL,40",
+     "MOV,F,40",
+     "MOV,FR,80",
+     "MOV,BR,60"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 32.901051651931134
+  },
+  {
+   "case": "D_seeded_04_s2",
+   "idx": 0,
+   "n_obstacles": 4,
+   "cpp": {
+    "case": "D_seeded_04_s2",
+    "kind": "leg",
+    "idx": 0,
+    "valid": true,
+    "reason": "",
+    "cost": 487.7500447356318,
+    "distance": 278.5894552033349,
+    "expansions": 93626,
+    "final": [
+     137.0252588973027,
+     188.8473161266521,
+     -1.5707963267948981
+    ],
+    "search_us": 624112,
+    "time_us": 624167,
+    "cmds": [
+     "FR,90",
+     "FL,120",
+     "FR,90",
+     "FL,120",
+     "BL,110",
+     "FL,10"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 487.7500447356318,
+    "distance": 278.5894552033349,
+    "expansions": 93626,
+    "final": [
+     137.0252588973027,
+     188.8473161266521,
+     -1.5707963267948981
+    ],
+    "time_us": 20518978,
+    "cmds": [
+     "MOV,FR,90",
+     "MOV,FL,120",
+     "MOV,FR,90",
+     "MOV,FL,120",
+     "MOV,BL,110",
+     "MOV,FL,10"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 32.87417950644619
+  },
+  {
+   "case": "D_seeded_04_s2",
+   "idx": 1,
+   "n_obstacles": 4,
+   "cpp": {
+    "case": "D_seeded_04_s2",
+    "kind": "leg",
+    "idx": 1,
+    "valid": true,
+    "reason": "",
+    "cost": 317.89814973613693,
+    "distance": 148.74483616641908,
+    "expansions": 6327,
+    "final": [
+     17.383368491748335,
+     130.2696832485274,
+     1.5707963267948966
+    ],
+    "search_us": 38785,
+    "time_us": 38803,
+    "cmds": [
+     "F,130",
+     "BR,20",
+     "BL,10",
+     "FL,10"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 317.89814973613693,
+    "distance": 148.74483616641908,
+    "expansions": 6327,
+    "final": [
+     17.383368491748335,
+     130.2696832485274,
+     1.5707963267948966
+    ],
+    "time_us": 1221923,
+    "cmds": [
+     "MOV,F,130",
+     "MOV,BR,20",
+     "MOV,BL,10",
+     "MOV,FL,10"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 31.490425997989846
+  },
+  {
+   "case": "D_seeded_04_s2",
+   "idx": 2,
+   "n_obstacles": 4,
+   "cpp": {
+    "case": "D_seeded_04_s2",
+    "kind": "leg",
+    "idx": 2,
+    "valid": true,
+    "reason": "",
+    "cost": 367.5535805337566,
+    "distance": 197.84315786680213,
+    "expansions": 22295,
+    "final": [
+     47.10364543996104,
+     138.21581122531052,
+     -1.5707963267948961
+    ],
+    "search_us": 139894,
+    "time_us": 139921,
+    "cmds": [
+     "F,100",
+     "FR,100",
+     "BR,50",
+     "FR,30"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 367.5535805337566,
+    "distance": 197.84315786680213,
+    "expansions": 22295,
+    "final": [
+     47.10364543996104,
+     138.21581122531052,
+     -1.5707963267948961
+    ],
+    "time_us": 4685731,
+    "cmds": [
+     "MOV,F,100",
+     "MOV,FR,100",
+     "MOV,BR,50",
+     "MOV,FR,30"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 33.48840417092502
+  },
+  {
+   "case": "D_seeded_04_s2",
+   "idx": 3,
+   "n_obstacles": 4,
+   "cpp": {
+    "case": "D_seeded_04_s2",
+    "kind": "leg",
+    "idx": 3,
+    "valid": true,
+    "reason": "",
+    "cost": 257.3444356690882,
+    "distance": 122.66026660230646,
+    "expansions": 2756,
+    "final": [
+     83.89011052973987,
+     49.90557234155392,
+     -1.5707963267948966
+    ],
+    "search_us": 17249,
+    "time_us": 17271,
+    "cmds": [
+     "F,20",
+     "FR,160",
+     "BR,20"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 257.3444356690882,
+    "distance": 122.66026660230646,
+    "expansions": 2756,
+    "final": [
+     83.89011052973987,
+     49.90557234155392,
+     -1.5707963267948966
+    ],
+    "time_us": 529867,
+    "cmds": [
+     "MOV,F,20",
+     "MOV,FR,160",
+     "MOV,BR,20"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 30.679578484164207
+  },
+  {
+   "case": "D_seeded_04_s2",
+   "idx": 4,
+   "n_obstacles": 4,
+   "cpp": {
+    "case": "D_seeded_04_s2",
+    "kind": "leg",
+    "idx": 4,
+    "valid": true,
+    "reason": "",
+    "cost": 402.6149782184507,
+    "distance": 191.2357261410187,
+    "expansions": 10383,
+    "final": [
+     16.33487886576062,
+     131.71632560686822,
+     1.5707963267948966
+    ],
+    "search_us": 64473,
+    "time_us": 64514,
+    "cmds": [
+     "FR,10",
+     "BR,10",
+     "FR,70",
+     "FL,110",
+     "BL,150",
+     "FL,10"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 402.6149782184507,
+    "distance": 191.2357261410187,
+    "expansions": 10383,
+    "final": [
+     16.33487886576062,
+     131.71632560686822,
+     1.5707963267948966
+    ],
+    "time_us": 2132473,
+    "cmds": [
+     "MOV,FR,10",
+     "MOV,BR,10",
+     "MOV,FR,70",
+     "MOV,FL,110",
+     "MOV,BL,150",
+     "MOV,FL,10"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 33.054422295935765
+  },
+  {
+   "case": "D_seeded_04_s2",
+   "idx": 5,
+   "n_obstacles": 4,
+   "cpp": {
+    "case": "D_seeded_04_s2",
+    "kind": "leg",
+    "idx": 5,
+    "valid": true,
+    "reason": "",
+    "cost": 235.55358053375656,
+    "distance": 97.84315786680212,
+    "expansions": 666,
+    "final": [
+     47.038348576001326,
+     139.5492484013386,
+     -1.5707963267948966
+    ],
+    "search_us": 3915,
+    "time_us": 3934,
+    "cmds": [
+     "BR,10",
+     "FR,90",
+     "BR,40",
+     "FR,40"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 235.55358053375656,
+    "distance": 97.84315786680212,
+    "expansions": 666,
+    "final": [
+     47.038348576001326,
+     139.5492484013386,
+     -1.5707963267948966
+    ],
+    "time_us": 122713,
+    "cmds": [
+     "MOV,BR,10",
+     "MOV,FR,90",
+     "MOV,BR,40",
+     "MOV,FR,40"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 31.192933401118456
+  },
+  {
+   "case": "D_seeded_04_s2",
+   "idx": 6,
+   "n_obstacles": 4,
+   "cpp": {
+    "case": "D_seeded_04_s2",
+    "kind": "leg",
+    "idx": 6,
+    "valid": true,
+    "reason": "",
+    "cost": 284.31697161052614,
+    "distance": 113.84782710759012,
+    "expansions": 4404,
+    "final": [
+     86.16042640466692,
+     51.96707389418111,
+     -1.5707963267948966
+    ],
+    "search_us": 28255,
+    "time_us": 28281,
+    "cmds": [
+     "BL,10",
+     "FL,50",
+     "FR,70",
+     "FL,50",
+     "FR,40"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 284.31697161052614,
+    "distance": 113.84782710759012,
+    "expansions": 4404,
+    "final": [
+     86.16042640466692,
+     51.96707389418111,
+     -1.5707963267948966
+    ],
+    "time_us": 877316,
+    "cmds": [
+     "MOV,BL,10",
+     "MOV,FL,50",
+     "MOV,FR,70",
+     "MOV,FL,50",
+     "MOV,FR,40"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 31.02139245429794
+  },
+  {
+   "case": "D_seeded_04_s2",
+   "idx": 7,
+   "n_obstacles": 4,
+   "cpp": {
+    "case": "D_seeded_04_s2",
+    "kind": "leg",
+    "idx": 7,
+    "valid": true,
+    "reason": "",
+    "cost": 442.1592936690351,
+    "distance": 159.7273768450285,
+    "expansions": 126007,
+    "final": [
+     135.1460589191026,
+     188.27902508436085,
+     -1.5707963267948966
+    ],
+    "search_us": 846311,
+    "time_us": 846347,
+    "cmds": [
+     "BR,50",
+     "BL,40",
+     "B,70",
+     "BR,40",
+     "BL,30",
+     "FL,10",
+     "BL,10"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 442.1592936690351,
+    "distance": 159.7273768450285,
+    "expansions": 126007,
+    "final": [
+     135.1460589191026,
+     188.27902508436085,
+     -1.5707963267948966
+    ],
+    "time_us": 26492003,
+    "cmds": [
+     "MOV,BR,50",
+     "MOV,BL,40",
+     "MOV,B,70",
+     "MOV,BR,40",
+     "MOV,BL,30",
+     "MOV,FL,10",
+     "MOV,BL,10"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 31.301585519887233
+  },
+  {
+   "case": "E_ordering_04_c1",
+   "idx": 0,
+   "n_obstacles": 4,
+   "cpp": {
+    "case": "E_ordering_04_c1",
+    "kind": "leg",
+    "idx": 0,
+    "valid": true,
+    "reason": "",
+    "cost": 354.13572674390576,
+    "distance": 176.365520914027,
+    "expansions": 13859,
+    "final": [
+     28.261738200855543,
+     127.4326720263896,
+     0
+    ],
+    "search_us": 82605,
+    "time_us": 82643,
+    "cmds": [
+     "FL,10",
+     "FR,120",
+     "BR,90",
+     "BL,100",
+     "FL,10"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 354.13572674390576,
+    "distance": 176.365520914027,
+    "expansions": 13859,
+    "final": [
+     28.261738200855543,
+     127.4326720263896,
+     0.0
+    ],
+    "time_us": 2643901,
+    "cmds": [
+     "MOV,FL,10",
+     "MOV,FR,120",
+     "MOV,BR,90",
+     "MOV,BL,100",
+     "MOV,FL,10"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 31.99183233909708
+  },
+  {
+   "case": "E_ordering_04_c1",
+   "idx": 1,
+   "n_obstacles": 4,
+   "cpp": {
+    "case": "E_ordering_04_c1",
+    "kind": "leg",
+    "idx": 1,
+    "valid": true,
+    "reason": "",
+    "cost": 142.8407044966673,
+    "distance": 40.840704496667314,
+    "expansions": 104,
+    "final": [
+     26.94876742982452,
+     49.408418393515426,
+     1.5707963267948966
+    ],
+    "search_us": 620,
+    "time_us": 629,
+    "cmds": [
+     "FL,10",
+     "FR,40",
+     "FL,30"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 142.8407044966673,
+    "distance": 40.840704496667314,
+    "expansions": 104,
+    "final": [
+     26.94876742982452,
+     49.408418393515426,
+     1.5707963267948966
+    ],
+    "time_us": 19758,
+    "cmds": [
+     "MOV,FL,10",
+     "MOV,FR,40",
+     "MOV,FL,30"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 31.41176470588235
+  },
+  {
+   "case": "E_ordering_04_c1",
+   "idx": 2,
+   "n_obstacles": 4,
+   "cpp": {
+    "case": "E_ordering_04_c1",
+    "kind": "leg",
+    "idx": 2,
+    "valid": true,
+    "reason": "",
+    "cost": 276.75242659293315,
+    "distance": 138.87584858118882,
+    "expansions": 5046,
+    "final": [
+     85.50116795587039,
+     29.135550868563165,
+     1.5707963267948966
+    ],
+    "search_us": 30063,
+    "time_us": 30094,
+    "cmds": [
+     "FR,130",
+     "FL,60",
+     "BL,40",
+     "FL,30"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 276.75242659293315,
+    "distance": 138.87584858118882,
+    "expansions": 5046,
+    "final": [
+     85.50116795587039,
+     29.135550868563165,
+     1.5707963267948966
+    ],
+    "time_us": 965207,
+    "cmds": [
+     "MOV,FR,130",
+     "MOV,FL,60",
+     "MOV,BL,40",
+     "MOV,FL,30"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 32.07307104406194
+  },
+  {
+   "case": "E_ordering_04_c1",
+   "idx": 3,
+   "n_obstacles": 4,
+   "cpp": {
+    "case": "E_ordering_04_c1",
+    "kind": "leg",
+    "idx": 3,
+    "valid": true,
+    "reason": "",
+    "cost": 526.3615311410772,
+    "distance": 316.49358687308666,
+    "expansions": 111330,
+    "final": [
+     186.28090338969787,
+     140.30580490550014,
+     1.5707963267948966
+    ],
+    "search_us": 734925,
+    "time_us": 734987,
+    "cmds": [
+     "FR,110",
+     "FL,80",
+     "FR,100",
+     "BR,230",
+     "F,60"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 526.3615311410772,
+    "distance": 316.49358687308666,
+    "expansions": 111330,
+    "final": [
+     186.28090338969787,
+     140.30580490550014,
+     1.5707963267948966
+    ],
+    "time_us": 23920642,
+    "cmds": [
+     "MOV,FR,110",
+     "MOV,FL,80",
+     "MOV,FR,100",
+     "MOV,BR,230",
+     "MOV,F,60"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 32.54566679410656
+  },
+  {
+   "case": "E_ordering_04_c1",
+   "idx": 4,
+   "n_obstacles": 4,
+   "cpp": {
+    "case": "E_ordering_04_c1",
+    "kind": "leg",
+    "idx": 4,
+    "valid": true,
+    "reason": "",
+    "cost": 356.4817372980358,
+    "distance": 143.43115792889398,
+    "expansions": 12802,
+    "final": [
+     26.317040557022665,
+     51.4178138987788,
+     1.5707963267948957
+    ],
+    "search_us": 77856,
+    "time_us": 77888,
+    "cmds": [
+     "BL,10",
+     "FL,60",
+     "BL,60",
+     "BR,100",
+     "BL,50",
+     "FL,10"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 356.4817372980358,
+    "distance": 143.43115792889398,
+    "expansions": 12802,
+    "final": [
+     26.317040557022665,
+     51.4178138987788,
+     1.5707963267948957
+    ],
+    "time_us": 2568854,
+    "cmds": [
+     "MOV,BL,10",
+     "MOV,FL,60",
+     "MOV,BL,60",
+     "MOV,BR,100",
+     "MOV,BL,50",
+     "MOV,FL,10"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 32.981383525061624
+  },
+  {
+   "case": "E_ordering_04_c1",
+   "idx": 5,
+   "n_obstacles": 4,
+   "cpp": {
+    "case": "E_ordering_04_c1",
+    "kind": "leg",
+    "idx": 5,
+    "valid": true,
+    "reason": "",
+    "cost": 244.03308817164583,
+    "distance": 101.54325588103009,
+    "expansions": 2655,
+    "final": [
+     86.15711870608556,
+     32.412218261763655,
+     1.5707963267948966
+    ],
+    "search_us": 15497,
+    "time_us": 15523,
+    "cmds": [
+     "FL,20",
+     "BL,80",
+     "BR,80",
+     "FR,20"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 244.03308817164583,
+    "distance": 101.54325588103009,
+    "expansions": 2655,
+    "final": [
+     86.15711870608556,
+     32.412218261763655,
+     1.5707963267948966
+    ],
+    "time_us": 502949,
+    "cmds": [
+     "MOV,FL,20",
+     "MOV,BL,80",
+     "MOV,BR,80",
+     "MOV,FR,20"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 32.40024479804161
+  },
+  {
+   "case": "E_ordering_04_c1",
+   "idx": 6,
+   "n_obstacles": 4,
+   "cpp": {
+    "case": "E_ordering_04_c1",
+    "kind": "leg",
+    "idx": 6,
+    "valid": true,
+    "reason": "",
+    "cost": 439.41650376929863,
+    "distance": 263.20647496791725,
+    "expansions": 72437,
+    "final": [
+     184.27389711926438,
+     137.25466654220273,
+     1.5707963267948966
+    ],
+    "search_us": 473453,
+    "time_us": 473510,
+    "cmds": [
+     "BR,20",
+     "FR,120",
+     "BR,220",
+     "F,90"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 439.41650376929863,
+    "distance": 263.20647496791725,
+    "expansions": 72437,
+    "final": [
+     184.27389711926438,
+     137.25466654220273,
+     1.5707963267948966
+    ],
+    "time_us": 15318442,
+    "cmds": [
+     "MOV,BR,20",
+     "MOV,FR,120",
+     "MOV,BR,220",
+     "MOV,F,90"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 32.3508310278558
+  },
+  {
+   "case": "E_ordering_04_c1",
+   "idx": 7,
+   "n_obstacles": 4,
+   "cpp": {
+    "case": "E_ordering_04_c1",
+    "kind": "leg",
+    "idx": 7,
+    "valid": true,
+    "reason": "",
+    "cost": 471.8359835101371,
+    "distance": 224.25293590518638,
+    "expansions": 66973,
+    "final": [
+     31.782026937236104,
+     126.30921115881665,
+     0
+    ],
+    "search_us": 429535,
+    "time_us": 429579,
+    "cmds": [
+     "BL,10",
+     "FL,170",
+     "BL,120",
+     "B,60",
+     "BR,20",
+     "FR,10"
+    ]
+   },
+   "py": {
+    "valid": true,
+    "reason": "",
+    "cost": 471.8359835101371,
+    "distance": 224.25293590518638,
+    "expansions": 66973,
+    "final": [
+     31.782026937236104,
+     126.30921115881665,
+     0.0
+    ],
+    "time_us": 14432648,
+    "cmds": [
+     "MOV,BL,10",
+     "MOV,FL,170",
+     "MOV,BL,120",
+     "MOV,B,60",
+     "MOV,BR,20",
+     "MOV,FR,10"
+    ]
+   },
+   "valid_match": true,
+   "cost_diff": 0.0,
+   "cmds_match": true,
+   "expansions_match": true,
+   "final_diff": 0.0,
+   "speedup": 33.59719166905273
+  }
+ ],
+ "target_mismatch_cases": 0
+}

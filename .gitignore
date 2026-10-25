@@ -1,6 +1,11 @@
-build/
+build*/
 install/
 log/
-.vscode/
-*.swp
-compile_commands.json
+__pycache__/
+*.pyc
+docs/parts/
+docs/cases*.txt
+docs/route_*.txt
+docs/_*
+*.exe
+*.obj

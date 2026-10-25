@@ -1,0 +1,311 @@
+[
+ {
+  "fixture": "A_spread_01",
+  "n": 1,
+  "cpp": {
+   "case": "A_spread_01",
+   "kind": "route",
+   "valid": true,
+   "complete": true,
+   "timed_out": false,
+   "cost": 153.05088062083416,
+   "order": [
+    1
+   ],
+   "leg_requests": 1,
+   "leg_plans": 1,
+   "bound_prunes": 0,
+   "failed_leg_plans": 0,
+   "leg_time_ms": 0.9,
+   "failed_leg_time_ms": 0.0,
+   "time_us": 924,
+   "cmds": [
+    "FL,10",
+    "FR,50",
+    "FL,40"
+   ]
+  },
+  "py": {
+   "valid": true,
+   "complete": true,
+   "order": [
+    1
+   ],
+   "cost": 153.05088062083416,
+   "time_us": 25256,
+   "cmds": [
+    "MOV,FL,10",
+    "MOV,FR,50",
+    "MOV,FL,40"
+   ]
+  },
+  "same_cost": true,
+  "same_order": true,
+  "same_cmds": true,
+  "speedup": 27.333333333333332
+ },
+ {
+  "fixture": "A_spread_02",
+  "n": 2,
+  "cpp": {
+   "case": "A_spread_02",
+   "kind": "route",
+   "valid": true,
+   "complete": true,
+   "timed_out": false,
+   "cost": 335.7870192912887,
+   "order": [
+    1,
+    2
+   ],
+   "leg_requests": 4,
+   "leg_plans": 4,
+   "bound_prunes": 0,
+   "failed_leg_plans": 0,
+   "leg_time_ms": 13.8,
+   "failed_leg_time_ms": 0.0,
+   "time_us": 13812,
+   "cmds": [
+    "FL,10",
+    "FR,50",
+    "FL,40",
+    "BL,30",
+    "BR,70",
+    "FR,50"
+   ]
+  },
+  "py": {
+   "valid": true,
+   "complete": true,
+   "order": [
+    1,
+    2
+   ],
+   "cost": 335.7870192912887,
+   "time_us": 422693,
+   "cmds": [
+    "MOV,FL,10",
+    "MOV,FR,50",
+    "MOV,FL,40",
+    "MOV,BL,30",
+    "MOV,BR,70",
+    "MOV,FR,50"
+   ]
+  },
+  "same_cost": true,
+  "same_order": true,
+  "same_cmds": true,
+  "speedup": 30.60331595713872
+ },
+ {
+  "fixture": "A_spread_03",
+  "n": 3,
+  "cpp": {
+   "case": "A_spread_03",
+   "kind": "route",
+   "valid": true,
+   "complete": true,
+   "timed_out": false,
+   "cost": 517.2783891392208,
+   "order": [
+    1,
+    3,
+    2
+   ],
+   "leg_requests": 15,
+   "leg_plans": 15,
+   "bound_prunes": 2,
+   "failed_leg_plans": 0,
+   "leg_time_ms": 111.1,
+   "failed_leg_time_ms": 0.0,
+   "time_us": 111204,
+   "cmds": [
+    "FL,10",
+    "FR,50",
+    "FL,40",
+    "BR,30",
+    "FR,90",
+    "FL,30",
+    "BL,70",
+    "BR,40",
+    "FR,30"
+   ]
+  },
+  "py": {
+   "valid": true,
+   "complete": true,
+   "order": [
+    1,
+    3,
+    2
+   ],
+   "cost": 517.2783891392208,
+   "time_us": 3790375,
+   "cmds": [
+    "MOV,FL,10",
+    "MOV,FR,50",
+    "MOV,FL,40",
+    "MOV,BR,30",
+    "MOV,FR,90",
+    "MOV,FL,30",
+    "MOV,BL,70",
+    "MOV,BR,40",
+    "MOV,FR,30"
+   ]
+  },
+  "same_cost": true,
+  "same_order": true,
+  "same_cmds": true,
+  "speedup": 34.08488004028632
+ },
+ {
+  "fixture": "A_spread_04",
+  "n": 4,
+  "cpp": {
+   "case": "A_spread_04",
+   "kind": "route",
+   "valid": true,
+   "complete": true,
+   "timed_out": false,
+   "cost": 864.9591901775508,
+   "order": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "leg_requests": 46,
+   "leg_plans": 46,
+   "bound_prunes": 19,
+   "failed_leg_plans": 0,
+   "leg_time_ms": 11025.6,
+   "failed_leg_time_ms": 0.0,
+   "time_us": 11025767,
+   "cmds": [
+    "FL,10",
+    "FR,50",
+    "FL,40",
+    "BL,30",
+    "BR,70",
+    "FR,50",
+    "BL,10",
+    "FL,50",
+    "FR,50",
+    "BR,10",
+    "BR,180",
+    "BL,100",
+    "BR,80",
+    "FR,20"
+   ]
+  },
+  "py": {
+   "valid": true,
+   "complete": true,
+   "order": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "cost": 864.9591901775508,
+   "time_us": 358704477,
+   "cmds": [
+    "MOV,FL,10",
+    "MOV,FR,50",
+    "MOV,FL,40",
+    "MOV,BL,30",
+    "MOV,BR,70",
+    "MOV,FR,50",
+    "MOV,BL,10",
+    "MOV,FL,50",
+    "MOV,FR,50",
+    "MOV,BR,10",
+    "MOV,BR,180",
+    "MOV,BL,100",
+    "MOV,BR,80",
+    "MOV,FR,20"
+   ]
+  },
+  "same_cost": true,
+  "same_order": true,
+  "same_cmds": true,
+  "speedup": 32.533290155687126
+ },
+ {
+  "fixture": "E_ordering_04_c1",
+  "n": 4,
+  "cpp": {
+   "case": "E_ordering_04_c1",
+   "kind": "route",
+   "valid": true,
+   "complete": true,
+   "timed_out": false,
+   "cost": 1251.9643657161566,
+   "order": [
+    2,
+    3,
+    4,
+    1
+   ],
+   "leg_requests": 52,
+   "leg_plans": 52,
+   "bound_prunes": 22,
+   "failed_leg_plans": 0,
+   "leg_time_ms": 21192.4,
+   "failed_leg_time_ms": 0.0,
+   "time_us": 21192573,
+   "cmds": [
+    "FL,10",
+    "FR,40",
+    "FL,30",
+    "FL,10",
+    "BL,90",
+    "BR,70",
+    "FR,30",
+    "BR,20",
+    "FR,120",
+    "BR,220",
+    "F,90",
+    "BL,10",
+    "FL,80",
+    "F,90",
+    "FR,50",
+    "BR,130"
+   ]
+  },
+  "py": {
+   "valid": true,
+   "complete": true,
+   "order": [
+    2,
+    3,
+    4,
+    1
+   ],
+   "cost": 1251.9643657161566,
+   "time_us": 684034799,
+   "cmds": [
+    "MOV,FL,10",
+    "MOV,FR,40",
+    "MOV,FL,30",
+    "MOV,FL,10",
+    "MOV,BL,90",
+    "MOV,BR,70",
+    "MOV,FR,30",
+    "MOV,BR,20",
+    "MOV,FR,120",
+    "MOV,BR,220",
+    "MOV,F,90",
+    "MOV,BL,10",
+    "MOV,FL,80",
+    "MOV,F,90",
+    "MOV,FR,50",
+    "MOV,BR,130"
+   ]
+  },
+  "same_cost": true,
+  "same_order": true,
+  "same_cmds": true,
+  "speedup": 32.277100048210286
+ }
+]
