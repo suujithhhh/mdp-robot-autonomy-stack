@@ -31,7 +31,8 @@ bool pose_is_safe(const Pose& pose, const LocalBounds& b, const std::vector<Rect
                   double arena_cm);
 
 // Convenience: physical margin only, no guard.
-bool pose_is_safe(const Pose& pose, const std::vector<Obstacle>& obstacles, const PlannerConfig& cfg);
+bool pose_is_safe(const Pose& pose, const std::vector<Obstacle>& obstacles,
+                  const PlannerConfig& cfg);
 
 bool footprint_in_arena(const Pose& pose, const PlannerConfig& cfg);
 

@@ -32,6 +32,7 @@ double primitive_length_cm(Cmd c, int value, const PlannerConfig& cfg);
 Pose propagate(const Pose& pose, Cmd c, int value, const PlannerConfig& cfg);
 // Pose part-way through a primitive, fraction in [0, 1]. fraction = 1 equals propagate().
 // `value` may be fractional here only because it is "this much of the integer command".
-Pose pose_at_fraction(const Pose& pose, Cmd c, int value, double fraction, const PlannerConfig& cfg);
+Pose pose_at_fraction(const Pose& pose, Cmd c, int value, double fraction,
+                      const PlannerConfig& cfg);
 
 }  // namespace mdp

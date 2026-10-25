@@ -13,6 +13,7 @@
 //   tf   odom -> base_link
 #include <fcntl.h>
 #include <termios.h>
+#include <tf2_ros/transform_broadcaster.h>
 #include <unistd.h>
 
 #include <cmath>
@@ -22,7 +23,6 @@
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/imu.hpp>
 #include <std_msgs/msg/string.hpp>
-#include <tf2_ros/transform_broadcaster.h>
 
 #include "stm32_bridge/bridge_core.hpp"
 
@@ -41,7 +41,8 @@ class Stm32BridgeNode : public rclcpp::Node {
  public:
   Stm32BridgeNode()
       : Node("stm32_bridge"),
-        core_(mdp::Pose{declare_parameter("initial_x_cm", 20.0), declare_parameter("initial_y_cm", 10.0),
+        core_(mdp::Pose{declare_parameter("initial_x_cm", 20.0),
+                        declare_parameter("initial_y_cm", 10.0),
                         declare_parameter("initial_yaw_deg", 90.0) * mdp::kDegToRad}) {
     const std::string port = declare_parameter("port", std::string("/tmp/vstm32"));
     open_serial(port);
@@ -52,7 +53,8 @@ class Stm32BridgeNode : public rclcpp::Node {
     diag_pub_ = create_publisher<diagnostic_msgs::msg::DiagnosticArray>("/diagnostics", 10);
     tf_ = std::make_unique<tf2_ros::TransformBroadcaster>(this);
     cmd_sub_ = create_subscription<std_msgs::msg::String>(
-        "/stm32/command", 10, [this](const std_msgs::msg::String::SharedPtr msg) { on_command(msg->data); });
+        "/stm32/command", 10,
+        [this](const std_msgs::msg::String::SharedPtr msg) { on_command(msg->data); });
     timer_ = create_wall_timer(std::chrono::milliseconds(10), [this] { tick(); });
     core_.send_imu_get(now_s());  // reference the IMU while the robot stands still
   }
@@ -84,7 +86,8 @@ class Stm32BridgeNode : public rclcpp::Node {
       return;
     }
     if (const auto* m = std::get_if<stm::MoveCmd>(&*cmd)) {
-      if (!core_.send_move(*m, now_s())) RCLCPP_WARN(get_logger(), "busy: '%s' refused", text.c_str());
+      if (!core_.send_move(*m, now_s()))
+        RCLCPP_WARN(get_logger(), "busy: '%s' refused", text.c_str());
     } else if (std::holds_alternative<stm::StopCmd>(*cmd)) {
       core_.send_stop(now_s());
     } else {
@@ -99,7 +102,8 @@ class Stm32BridgeNode : public rclcpp::Node {
     if (n > 0) core_.on_bytes(std::string_view(buf, static_cast<std::size_t>(n)), now_s());
     core_.poll(now_s());
     const std::string tx = core_.take_tx();
-    if (!tx.empty() && write(fd_, tx.data(), tx.size()) < 0) RCLCPP_WARN(get_logger(), "serial write failed");
+    if (!tx.empty() && write(fd_, tx.data(), tx.size()) < 0)
+      RCLCPP_WARN(get_logger(), "serial write failed");
 
     while (const auto r = core_.take_result()) {
       std_msgs::msg::String msg;

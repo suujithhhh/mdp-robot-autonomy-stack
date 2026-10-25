@@ -99,8 +99,11 @@ TEST(Route, FindsTheOptimalOrderOnAKnownLayout) {
 }
 
 TEST(Route, HeldKarpPruningDoesNotChangeTheOptimalCost) {
-  const std::vector<Obstacle> obs{{1, 30, 100, 'S'},  {2, 100, 20, 'W'}, {3, 130, 50, 'W'},
-                                  {4, 150, 150, 'S'}, {5, 60, 160, 'E'}};
+  const std::vector<Obstacle> obs{{1, 30, 100, 'S'},
+                                  {2, 100, 20, 'W'},
+                                  {3, 130, 50, 'W'},
+                                  {4, 150, 150, 'S'},
+                                  {5, 60, 160, 'E'}};
   RouteOptions with, without;
   without.use_held_karp_bound = false;
   const RouteResult a = optimise_route({20, 10, kPi / 2}, obs, cfg, distance_planner(), with);
@@ -111,7 +114,7 @@ TEST(Route, HeldKarpPruningDoesNotChangeTheOptimalCost) {
 
 TEST(Route, HeldKarpPruningPlansFewerLegs) {
   const std::vector<Obstacle> obs{{1, 30, 100, 'S'},  {2, 100, 20, 'W'}, {3, 130, 50, 'W'},
-                                  {4, 150, 150, 'S'}, {5, 60, 160, 'E'},  {6, 170, 90, 'W'}};
+                                  {4, 150, 150, 'S'}, {5, 60, 160, 'E'}, {6, 170, 90, 'W'}};
   RouteOptions with, without;
   without.use_held_karp_bound = false;
   const RouteResult a = optimise_route({20, 10, kPi / 2}, obs, cfg, distance_planner(), with);
@@ -173,8 +176,7 @@ TEST(Route, TimeLimitIsEnforcedAndReturnsPromptly) {
 
 TEST(Route, RealPlannerCompletesASmallRouteWithValidLegs) {
   const std::vector<Obstacle> obs{{1, 30, 100, 'S'}, {2, 100, 20, 'W'}};
-  const RouteResult r =
-      optimise_route({20, 10, kPi / 2}, obs, cfg, default_leg_planner(obs, cfg));
+  const RouteResult r = optimise_route({20, 10, kPi / 2}, obs, cfg, default_leg_planner(obs, cfg));
   ASSERT_TRUE(r.complete);
   EXPECT_GT(r.total_cost, 0.0);
   for (const auto& leg : r.legs) EXPECT_TRUE(leg.plan.valid);

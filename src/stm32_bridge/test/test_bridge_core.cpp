@@ -52,7 +52,7 @@ TEST(Bridge, OnlyOneCommandInFlight) {
   ASSERT_TRUE(b.send_move(mv(mdp::Cmd::F, 10), 0.0));
   b.take_tx();
   EXPECT_FALSE(b.send_move(mv(mdp::Cmd::B, 10), 0.1));  // refused locally
-  EXPECT_TRUE(b.take_tx().empty());                      // and nothing was transmitted
+  EXPECT_TRUE(b.take_tx().empty());                     // and nothing was transmitted
 }
 
 TEST(Bridge, AckResolvesTheCommandAndAdvancesTheCommandedPose) {
@@ -194,7 +194,8 @@ TEST(Bridge, StopCrossingAMovementReportsStoppedAndMarksThePoseUncertain) {
   BridgeCore b(kStart);
   b.send_move(mv(mdp::Cmd::F, 50), 0.0);
   b.send_stop(0.5);
-  b.on_bytes("MM,EV:START,D:F\nMM,EV:END,D:F,T:500,RESULT:STOPPED,DL:300,DR:300\nACK,STOPPED\n", 0.7);
+  b.on_bytes("MM,EV:START,D:F\nMM,EV:END,D:F,T:500,RESULT:STOPPED,DL:300,DR:300\nACK,STOPPED\n",
+             0.7);
   const auto r = b.take_result();
   ASSERT_TRUE(r.has_value());
   EXPECT_EQ(r->outcome, Outcome::Stopped);

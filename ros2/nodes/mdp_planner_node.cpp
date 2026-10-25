@@ -33,7 +33,8 @@ std::vector<mdp::Obstacle> parse_obstacles(const std::string& spec) {
   while (std::getline(ss, item, ';')) {
     double x = 0, y = 0;
     char face = 'N';
-    if (std::sscanf(item.c_str(), "%lf,%lf,%c", &x, &y, &face) == 3) out.push_back({id++, x, y, face});
+    if (std::sscanf(item.c_str(), "%lf,%lf,%c", &x, &y, &face) == 3)
+      out.push_back({id++, x, y, face});
   }
   return out;
 }
@@ -73,15 +74,18 @@ class PlannerNode : public rclcpp::Node {
   void plan(std_srvs::srv::Trigger::Response& res) {
     const mdp::PlannerConfig cfg;
     const auto obstacles = parse_obstacles(get_parameter("obstacles").as_string());
-    const mdp::Pose start{get_parameter("start_x_cm").as_double(), get_parameter("start_y_cm").as_double(),
+    const mdp::Pose start{get_parameter("start_x_cm").as_double(),
+                          get_parameter("start_y_cm").as_double(),
                           get_parameter("start_yaw_deg").as_double() * mdp::kDegToRad};
     mdp::RouteOptions opts;
-    opts.time_limit = std::chrono::milliseconds(static_cast<long>(get_parameter("time_limit_s").as_double() * 1000));
+    opts.time_limit = std::chrono::milliseconds(
+        static_cast<long>(get_parameter("time_limit_s").as_double() * 1000));
 
     const auto t0 = std::chrono::steady_clock::now();
     const mdp::RouteResult route =
         mdp::optimise_route(start, obstacles, cfg, mdp::default_leg_planner(obstacles, cfg), opts);
-    const double ms = std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() - t0).count();
+    const double ms =
+        std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() - t0).count();
     if (!route.valid) {
       res.success = false;
       res.message = "no route: " + route.reason;
@@ -97,9 +101,11 @@ class PlannerNode : public rclcpp::Node {
     mdp::Pose cursor = start;
     for (const auto& leg : route.legs) {
       for (const auto& a : leg.plan.actions) {
-        for (const auto& p : mdp::sample_primitive(cursor, a.cmd, a.value, cfg).poses) path.poses.push_back(to_pose(p, stamp));
+        for (const auto& p : mdp::sample_primitive(cursor, a.cmd, a.value, cfg).poses)
+          path.poses.push_back(to_pose(p, stamp));
         cursor = mdp::propagate(cursor, a.cmd, a.value, cfg);
-        commands += "MOV," + std::string(mdp::cmd_name(a.cmd)) + "," + std::to_string(a.value) + "\n";
+        commands +=
+            "MOV," + std::string(mdp::cmd_name(a.cmd)) + "," + std::to_string(a.value) + "\n";
       }
     }
     path_pub_->publish(path);
@@ -109,8 +115,8 @@ class PlannerNode : public rclcpp::Node {
     publish_markers(obstacles, route, cfg, stamp);
 
     res.success = true;
-    res.message = "planned " + std::to_string(route.legs.size()) + "/" + std::to_string(obstacles.size()) +
-                  " obstacles in " + std::to_string(ms) + " ms";
+    res.message = "planned " + std::to_string(route.legs.size()) + "/" +
+                  std::to_string(obstacles.size()) + " obstacles in " + std::to_string(ms) + " ms";
     RCLCPP_INFO(get_logger(), "%s", res.message.c_str());
   }
 

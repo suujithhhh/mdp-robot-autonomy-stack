@@ -39,8 +39,9 @@ TEST(Command, StopVariantsAreRejected) {
 }
 
 TEST(Command, MalformedMovesAreRejected) {
-  for (const char* bad : {"", "MOV", "MOV,F", "MOV,F,", "MOV,F,x", "MOV,X,10", "MOV,F,10,5", "mov,F,10",
-                          "MOV,F,-5", "MOV,F, 5", "MOV, F,5", "MOV,f,5", "MOV,F,5 ", "MOV,F,+5"}) {
+  for (const char* bad :
+       {"", "MOV", "MOV,F", "MOV,F,", "MOV,F,x", "MOV,X,10", "MOV,F,10,5", "mov,F,10", "MOV,F,-5",
+        "MOV,F, 5", "MOV, F,5", "MOV,f,5", "MOV,F,5 ", "MOV,F,+5"}) {
     EXPECT_FALSE(parse_command(bad).has_value()) << "[" << bad << "]";
   }
 }
@@ -50,7 +51,8 @@ TEST(Command, ValueLimitsFollowTheWireFormat) {
   EXPECT_FALSE(parse_command("MOV,F,1000").has_value());
   EXPECT_TRUE(parse_command("MOV,FL,360").has_value());
   EXPECT_FALSE(parse_command("MOV,FL,361").has_value());
-  EXPECT_TRUE(parse_command("MOV,F,0").has_value());  // the device accepts 0; the planner never sends it
+  EXPECT_TRUE(
+      parse_command("MOV,F,0").has_value());  // the device accepts 0; the planner never sends it
 }
 
 TEST(Command, LinesLongerThan31CharactersAreRejected) {
@@ -100,7 +102,8 @@ TEST(Reply, TelemetryRoundTrips) {
 }
 
 TEST(Reply, GarbageIsNotAReply) {
-  for (const char* bad : {"", "HELLO", "ACKK", "ERR", "MM,TEL,T:1", "MM,TEL,T:a,L:1,R:1,H:1", "IMU,abc"}) {
+  for (const char* bad :
+       {"", "HELLO", "ACKK", "ERR", "MM,TEL,T:1", "MM,TEL,T:a,L:1,R:1,H:1", "IMU,abc"}) {
     EXPECT_FALSE(parse_reply(bad).has_value()) << "[" << bad << "]";
   }
 }

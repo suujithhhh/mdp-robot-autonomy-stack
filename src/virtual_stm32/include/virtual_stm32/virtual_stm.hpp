@@ -14,7 +14,8 @@
 //     straight 1.43 s + 0.0215 s/cm, turn 0.73 s + 0.020 s/deg; progress is linear in time
 //   * encoders: 75 counts/cm; wheel track 15 cm for the inner/outer wheel split in turns;
 //     telemetry and the MM,EV:END line report displacement since the movement started
-//     (the END line carries DL/DR as in PROTOCOL.md section 4.7, a TARGET feature of the real firmware)
+//     (the END line carries DL/DR as in PROTOCOL.md section 4.7, a TARGET feature of the real
+//     firmware)
 //   * IMU: true heading + constant bias + Gaussian noise, reported in degrees
 #pragma once
 
@@ -28,13 +29,13 @@
 namespace stm {
 
 struct FaultConfig {
-  double drop_rate{0.0};         // probability that each outgoing byte is lost
-  bool imu_fail{false};          // MOV / IMU,GET answer ERR,IMU_NOT_READY
-  bool stall{false};             // motors never finish: the motion deadline expires
-  double encoder_noise{0.0};     // relative Gaussian noise on encoder counts (e.g. 0.01 = 1 %)
-  double imu_noise_deg{0.0};     // Gaussian noise on each reported IMU heading, degrees
-  double imu_bias_deg{0.0};      // constant bias added to the reported heading, degrees
-  double slip{0.0};              // fraction of commanded travel that is lost (wheel slip), 0..1
+  double drop_rate{0.0};      // probability that each outgoing byte is lost
+  bool imu_fail{false};       // MOV / IMU,GET answer ERR,IMU_NOT_READY
+  bool stall{false};          // motors never finish: the motion deadline expires
+  double encoder_noise{0.0};  // relative Gaussian noise on encoder counts (e.g. 0.01 = 1 %)
+  double imu_noise_deg{0.0};  // Gaussian noise on each reported IMU heading, degrees
+  double imu_bias_deg{0.0};   // constant bias added to the reported heading, degrees
+  double slip{0.0};           // fraction of commanded travel that is lost (wheel slip), 0..1
   unsigned seed{1};
 };
 
@@ -75,8 +76,8 @@ class VirtualStm {
   LineFramer framer_;
   std::string out_;
 
-  mdp::Pose pose_;          // true pose (rear-axle midpoint)
-  mdp::Pose move_start_;    // pose when the current move began
+  mdp::Pose pose_;        // true pose (rear-axle midpoint)
+  mdp::Pose move_start_;  // pose when the current move began
   State state_{State::Idle};
   MoveCmd move_{mdp::Cmd::F, 0};
   double now_s_{0.0};

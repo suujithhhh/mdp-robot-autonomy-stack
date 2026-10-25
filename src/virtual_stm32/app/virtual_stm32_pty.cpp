@@ -24,11 +24,16 @@ int main(int argc, char** argv) {
   stm::FaultConfig faults;
   for (int i = 1; i < argc; ++i) {
     const std::string a = argv[i];
-    if (a == "--stall") faults.stall = true;
-    else if (i + 1 < argc && a == "--link") link_path = argv[++i];
-    else if (i + 1 < argc && a == "--speed") speed = std::atof(argv[++i]);
-    else if (i + 1 < argc && a == "--slip") faults.slip = std::atof(argv[++i]);
-    else if (i + 1 < argc && a == "--drop") faults.drop_rate = std::atof(argv[++i]);
+    if (a == "--stall")
+      faults.stall = true;
+    else if (i + 1 < argc && a == "--link")
+      link_path = argv[++i];
+    else if (i + 1 < argc && a == "--speed")
+      speed = std::atof(argv[++i]);
+    else if (i + 1 < argc && a == "--slip")
+      faults.slip = std::atof(argv[++i]);
+    else if (i + 1 < argc && a == "--drop")
+      faults.drop_rate = std::atof(argv[++i]);
   }
 
   const int master = posix_openpt(O_RDWR | O_NOCTTY);

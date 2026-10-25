@@ -33,12 +33,12 @@ struct RouteLeg {
 
 struct RouteStats {
   long leg_requests{0};
-  long leg_plans{0};      // cache misses = legs actually planned
+  long leg_plans{0};  // cache misses = legs actually planned
   long bound_prunes{0};
   long incumbent_updates{0};
   long nodes_visited{0};
-  long failed_leg_plans{0};      // legs that returned invalid (unreachable / expansion limit)
-  double leg_time_ms{0.0};       // total wall time spent inside the leg planner
+  long failed_leg_plans{0};  // legs that returned invalid (unreachable / expansion limit)
+  double leg_time_ms{0.0};   // total wall time spent inside the leg planner
   double failed_leg_time_ms{0.0};
 };
 

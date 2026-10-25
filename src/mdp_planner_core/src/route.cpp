@@ -17,11 +17,28 @@ namespace mdp {
 Pose viewing_target(const Obstacle& obstacle, const PlannerConfig& cfg) {
   double out_x = 0.0, out_y = 0.0, heading = 0.0;
   switch (obstacle.face) {
-    case 'N': out_x = 0.0; out_y = 1.0; heading = -kPi / 2; break;
-    case 'E': out_x = 1.0; out_y = 0.0; heading = kPi; break;
-    case 'S': out_x = 0.0; out_y = -1.0; heading = kPi / 2; break;
-    case 'W': out_x = -1.0; out_y = 0.0; heading = 0.0; break;
-    default: throw std::invalid_argument("obstacle face must be one of N, E, S, W");
+    case 'N':
+      out_x = 0.0;
+      out_y = 1.0;
+      heading = -kPi / 2;
+      break;
+    case 'E':
+      out_x = 1.0;
+      out_y = 0.0;
+      heading = kPi;
+      break;
+    case 'S':
+      out_x = 0.0;
+      out_y = -1.0;
+      heading = kPi / 2;
+      break;
+    case 'W':
+      out_x = -1.0;
+      out_y = 0.0;
+      heading = 0.0;
+      break;
+    default:
+      throw std::invalid_argument("obstacle face must be one of N, E, S, W");
   }
   const double half = cfg.obstacle_cm / 2;
   const double lens_x = obstacle.x + half + out_x * (half + cfg.camera_standoff_cm);
@@ -198,8 +215,7 @@ class Search {
 
     const unsigned remaining = full_mask_ & ~visited;
     // Prune this whole subtree if even the optimistic completion cannot beat the incumbent.
-    if (best_complete_ && bound_ &&
-        g + bound_->lower_bound(current, remaining) >= best_cost_) {
+    if (best_complete_ && bound_ && g + bound_->lower_bound(current, remaining) >= best_cost_) {
       ++stats_.bound_prunes;
       return;
     }

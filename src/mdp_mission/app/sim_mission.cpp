@@ -24,7 +24,8 @@ std::vector<mdp::Obstacle> parse_obstacles(const std::string& spec) {
   while (std::getline(ss, item, ';')) {
     double x = 0, y = 0;
     char face = 'N';
-    if (std::sscanf(item.c_str(), "%lf,%lf,%c", &x, &y, &face) == 3) out.push_back({id++, x, y, face});
+    if (std::sscanf(item.c_str(), "%lf,%lf,%c", &x, &y, &face) == 3)
+      out.push_back({id++, x, y, face});
   }
   return out;
 }
@@ -38,13 +39,18 @@ int main(int argc, char** argv) {
   stm::FaultConfig faults;
   for (int i = 1; i + 1 < argc; i += 2) {
     const std::string key = argv[i];
-    if (key == "--obs") obstacles = parse_obstacles(argv[i + 1]);
-    else if (key == "--csv") csv_path = argv[i + 1];
-    else if (key == "--slip") faults.slip = std::atof(argv[i + 1]);
-    else if (key == "--noise") faults.encoder_noise = std::atof(argv[i + 1]);
+    if (key == "--obs")
+      obstacles = parse_obstacles(argv[i + 1]);
+    else if (key == "--csv")
+      csv_path = argv[i + 1];
+    else if (key == "--slip")
+      faults.slip = std::atof(argv[i + 1]);
+    else if (key == "--noise")
+      faults.encoder_noise = std::atof(argv[i + 1]);
     else if (key == "--start") {
       double x, y, h;
-      if (std::sscanf(argv[i + 1], "%lf,%lf,%lf", &x, &y, &h) == 3) start = {x, y, h * mdp::kDegToRad};
+      if (std::sscanf(argv[i + 1], "%lf,%lf,%lf", &x, &y, &h) == 3)
+        start = {x, y, h * mdp::kDegToRad};
     }
   }
 
@@ -57,9 +63,10 @@ int main(int argc, char** argv) {
   const double plan_ms =
       std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() - t0).count();
 
-  std::printf("planned %zu/%zu obstacles in %.1f ms  (complete=%d timed_out=%d cost=%.1f cm-equiv)\n",
-              route.legs.size(), obstacles.size(), plan_ms, route.complete, route.timed_out,
-              route.total_cost);
+  std::printf(
+      "planned %zu/%zu obstacles in %.1f ms  (complete=%d timed_out=%d cost=%.1f cm-equiv)\n",
+      route.legs.size(), obstacles.size(), plan_ms, route.complete, route.timed_out,
+      route.total_cost);
   std::printf("  leg plans %ld, cache hits %ld, bound prunes %ld\n", route.stats.leg_plans,
               route.stats.leg_requests - route.stats.leg_plans, route.stats.bound_prunes);
   if (!route.valid) {
@@ -88,10 +95,11 @@ int main(int argc, char** argv) {
   if (!r.completed)
     std::printf("  failure: %s on %s\n", stm::outcome_name(r.failure), r.failed_wire.c_str());
   for (const auto& s : r.snapshots) {
-    std::printf("  obstacle %d: target (%.1f, %.1f)  commanded error %.2f cm  odometry error %.2f cm\n",
-                s.obstacle_id, s.target.x, s.target.y,
-                std::hypot(s.commanded.x - s.target.x, s.commanded.y - s.target.y),
-                std::hypot(s.odometry.x - s.target.x, s.odometry.y - s.target.y));
+    std::printf(
+        "  obstacle %d: target (%.1f, %.1f)  commanded error %.2f cm  odometry error %.2f cm\n",
+        s.obstacle_id, s.target.x, s.target.y,
+        std::hypot(s.commanded.x - s.target.x, s.commanded.y - s.target.y),
+        std::hypot(s.odometry.x - s.target.x, s.odometry.y - s.target.y));
   }
   const mdp::Pose truth = link.device().true_pose();
   std::printf("final: true (%.1f, %.1f)  commanded (%.1f, %.1f)  odometry (%.1f, %.1f)\n", truth.x,

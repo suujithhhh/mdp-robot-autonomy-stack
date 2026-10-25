@@ -59,8 +59,8 @@ bool pose_is_safe(const Pose& pose, const LocalBounds& b, const std::vector<Rect
     double p0 = x0 * c + y0 * s, p1 = x1 * c + y1 * s, p2 = x2 * c + y2 * s, p3 = x3 * c + y3 * s;
     double q0 = r.left * c + r.bottom * s, q1 = r.right * c + r.bottom * s;
     double q2 = r.right * c + r.top * s, q3 = r.left * c + r.top * s;
-    if (!overlap(std::max({p0, p1, p2, p3}), std::min({p0, p1, p2, p3}),
-                 std::max({q0, q1, q2, q3}), std::min({q0, q1, q2, q3})))
+    if (!overlap(std::max({p0, p1, p2, p3}), std::min({p0, p1, p2, p3}), std::max({q0, q1, q2, q3}),
+                 std::min({q0, q1, q2, q3})))
       continue;
     // Axis (-sin, cos): the robot's short axis.
     p0 = x0 * ns + y0 * c;
@@ -71,8 +71,8 @@ bool pose_is_safe(const Pose& pose, const LocalBounds& b, const std::vector<Rect
     q1 = r.right * ns + r.bottom * c;
     q2 = r.right * ns + r.top * c;
     q3 = r.left * ns + r.top * c;
-    if (overlap(std::max({p0, p1, p2, p3}), std::min({p0, p1, p2, p3}),
-                std::max({q0, q1, q2, q3}), std::min({q0, q1, q2, q3})))
+    if (overlap(std::max({p0, p1, p2, p3}), std::min({p0, p1, p2, p3}), std::max({q0, q1, q2, q3}),
+                std::min({q0, q1, q2, q3})))
       return false;  // overlaps on all four axes -> collision
   }
   return true;

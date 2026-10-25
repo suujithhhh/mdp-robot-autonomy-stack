@@ -122,14 +122,16 @@ TEST(EndToEnd, RecordedPathStartsAtTheStartAndVisitsEveryViewingPose) {
   const auto route = plan();
   SimLink link(kStart);
   std::vector<mdp::Pose> path;
-  link.set_observer([&](double, const mdp::Pose& truth, const mdp::Pose&) { path.push_back(truth); });
+  link.set_observer(
+      [&](double, const mdp::Pose& truth, const mdp::Pose&) { path.push_back(truth); });
   power_up(link);
   ASSERT_TRUE(run_mission(route, link).completed);
   EXPECT_LT(dist(path.front(), kStart), 1.0);
   for (const auto& leg : route.legs) {
     double nearest = 1e9;
     for (const auto& p : path) nearest = std::min(nearest, dist(p, leg.target));
-    EXPECT_LT(nearest, cfg.lattice_goal_position_tolerance_cm + 0.5) << "obstacle " << leg.obstacle_id;
+    EXPECT_LT(nearest, cfg.lattice_goal_position_tolerance_cm + 0.5)
+        << "obstacle " << leg.obstacle_id;
   }
 }
 
@@ -247,8 +249,8 @@ TEST(EndToEndFaults, WheelSlipIsInvisibleToTheCommandedPoseButSeenByTheOdometry)
   ASSERT_TRUE(r.completed);  // every command was ACKed
   const double commanded_error = dist(link.bridge().commanded_pose(), link.device().true_pose());
   const double odometry_error = dist(link.bridge().odometry().pose, link.device().true_pose());
-  EXPECT_GT(commanded_error, 3.0);                // open-loop dead reckoning drifts
-  EXPECT_LT(odometry_error, commanded_error);     // wheel counts see (most of) the slip
+  EXPECT_GT(commanded_error, 3.0);             // open-loop dead reckoning drifts
+  EXPECT_LT(odometry_error, commanded_error);  // wheel counts see (most of) the slip
 }
 
 TEST(EndToEndFaults, ImuBiasSkewsTheOdometryHeadingByTheBias) {

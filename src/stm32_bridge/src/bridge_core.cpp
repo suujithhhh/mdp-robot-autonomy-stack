@@ -28,14 +28,22 @@ std::optional<long> field(std::string_view line, std::string_view key) {
 
 const char* outcome_name(Outcome o) {
   switch (o) {
-    case Outcome::Ack: return "ACK";
-    case Outcome::Stopped: return "STOPPED";
-    case Outcome::ErrBusy: return "ERR_BUSY";
-    case Outcome::ErrBadCmd: return "ERR_BAD_CMD";
-    case Outcome::ErrImuNotReady: return "ERR_IMU_NOT_READY";
-    case Outcome::ErrMotionTimeout: return "ERR_MOTION_TIMEOUT";
-    case Outcome::ErrOther: return "ERR_OTHER";
-    case Outcome::LinkTimeout: return "LINK_TIMEOUT";
+    case Outcome::Ack:
+      return "ACK";
+    case Outcome::Stopped:
+      return "STOPPED";
+    case Outcome::ErrBusy:
+      return "ERR_BUSY";
+    case Outcome::ErrBadCmd:
+      return "ERR_BAD_CMD";
+    case Outcome::ErrImuNotReady:
+      return "ERR_IMU_NOT_READY";
+    case Outcome::ErrMotionTimeout:
+      return "ERR_MOTION_TIMEOUT";
+    case Outcome::ErrOther:
+      return "ERR_OTHER";
+    case Outcome::LinkTimeout:
+      return "LINK_TIMEOUT";
   }
   return "?";
 }
@@ -135,17 +143,23 @@ void BridgeCore::on_reply(const Reply& r, double now_s) {
     }
     Outcome o = Outcome::ErrOther;
     switch (e->code) {
-      case ErrCode::BadCmd: o = Outcome::ErrBadCmd; break;
-      case ErrCode::Busy: o = Outcome::ErrBusy; break;
+      case ErrCode::BadCmd:
+        o = Outcome::ErrBadCmd;
+        break;
+      case ErrCode::Busy:
+        o = Outcome::ErrBusy;
+        break;
       case ErrCode::ImuNotReady:
         o = Outcome::ErrImuNotReady;
-        if (saw_start_) pose_uncertain_ = true;  // aborted mid-motion; if rejected up front, nothing moved
+        if (saw_start_)
+          pose_uncertain_ = true;  // aborted mid-motion; if rejected up front, nothing moved
         break;
       case ErrCode::MotionTimeout:
         o = Outcome::ErrMotionTimeout;
         pose_uncertain_ = true;
         break;
-      case ErrCode::Unknown: break;
+      case ErrCode::Unknown:
+        break;
     }
     resolve(o, now_s);
   } else if (const auto* imu = std::get_if<ImuReading>(&r)) {
@@ -169,10 +183,13 @@ void BridgeCore::on_reply(const Reply& r, double now_s) {
 // Advance the odometry by wheel-count deltas, with the heading taken from the IMU.
 void BridgeCore::advance_odometry(long dl, long dr, double imu_deg) {
   const double ref = imu_ref_set_ ? imu_ref_deg_ : 0.0;
-  const double new_heading = mdp::normalize_heading((initial_.heading * mdp::kRadToDeg + (imu_deg - ref)) * mdp::kDegToRad);
+  const double new_heading = mdp::normalize_heading(
+      (initial_.heading * mdp::kRadToDeg + (imu_deg - ref)) * mdp::kDegToRad);
   // Midpoint heading over the interval: exact enough at 10 Hz and robust across the +/-pi wrap.
-  const double mid = odom_.pose.heading + mdp::normalize_heading(new_heading - odom_.pose.heading) / 2.0;
-  const double dist_cm = (static_cast<double>(dl) + static_cast<double>(dr)) / 2.0 / cfg_.counts_per_cm;
+  const double mid =
+      odom_.pose.heading + mdp::normalize_heading(new_heading - odom_.pose.heading) / 2.0;
+  const double dist_cm =
+      (static_cast<double>(dl) + static_cast<double>(dr)) / 2.0 / cfg_.counts_per_cm;
   odom_.pose.x += dist_cm * std::cos(mid);
   odom_.pose.y += dist_cm * std::sin(mid);
   odom_.pose.heading = new_heading;

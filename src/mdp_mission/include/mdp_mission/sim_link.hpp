@@ -24,7 +24,9 @@ class SimLink : public Link {
   // exercises line reassembly the way a real serial read would.
   void set_read_chunk(std::size_t bytes) { chunk_ = bytes; }
   // Bytes written by the host pass through this filter before reaching the device (fault tests).
-  void set_tx_filter(std::function<std::string(const std::string&)> f) { tx_filter_ = std::move(f); }
+  void set_tx_filter(std::function<std::string(const std::string&)> f) {
+    tx_filter_ = std::move(f);
+  }
   // Called after every 10 ms step with (time, true pose, odometry pose); used to record paths.
   using Observer = std::function<void(double, const mdp::Pose&, const mdp::Pose&)>;
   void set_observer(Observer o) { observer_ = std::move(o); }
@@ -51,7 +53,8 @@ class SimLink : public Link {
       bridge_.on_bytes(bytes, t_);
       return;
     }
-    for (std::size_t i = 0; i < bytes.size(); i += chunk_) bridge_.on_bytes(bytes.substr(i, chunk_), t_);
+    for (std::size_t i = 0; i < bytes.size(); i += chunk_)
+      bridge_.on_bytes(bytes.substr(i, chunk_), t_);
   }
 
   stm::VirtualStm stm_;

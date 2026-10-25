@@ -21,7 +21,8 @@ class MissionNode : public rclcpp::Node {
         "/planned_commands", rclcpp::QoS(1).transient_local(),
         [this](const std_msgs::msg::String::SharedPtr msg) { load(msg->data); });
     result_sub_ = create_subscription<std_msgs::msg::String>(
-        "/stm32/result", 10, [this](const std_msgs::msg::String::SharedPtr msg) { on_result(msg->data); });
+        "/stm32/result", 10,
+        [this](const std_msgs::msg::String::SharedPtr msg) { on_result(msg->data); });
     service_ = create_service<std_srvs::srv::Trigger>(
         "/run_mission", [this](const std::shared_ptr<std_srvs::srv::Trigger::Request>,
                                std::shared_ptr<std_srvs::srv::Trigger::Response> res) {

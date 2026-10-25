@@ -67,8 +67,8 @@ LatticePlan compress_lattice_plan(const LatticePlan& plan, const std::vector<Obs
         Pose replay = current;
         for (const auto& a : chunk) replay = propagate(replay, a.cmd, a.value, cfg);
         if (poses_match_strict(samples->back(), replay)) {
-          out.push_back({cmd, combined, current, samples->back(),
-                         primitive_length_cm(cmd, combined, cfg)});
+          out.push_back(
+              {cmd, combined, current, samples->back(), primitive_length_cm(cmd, combined, cfg)});
           current = samples->back();
           merged = true;
         }
@@ -81,8 +81,8 @@ LatticePlan compress_lattice_plan(const LatticePlan& plan, const std::vector<Obs
       if (!samples) {
         throw std::runtime_error("compression: original action failed re-validation");
       }
-      out.push_back({a.cmd, a.value, current, samples->back(),
-                     primitive_length_cm(a.cmd, a.value, cfg)});
+      out.push_back(
+          {a.cmd, a.value, current, samples->back(), primitive_length_cm(a.cmd, a.value, cfg)});
       current = samples->back();
     }
   }

@@ -80,11 +80,16 @@ std::optional<Command> parse_command(std::string_view line) {
 
 const char* err_code_name(ErrCode e) {
   switch (e) {
-    case ErrCode::BadCmd: return "BAD_CMD";
-    case ErrCode::Busy: return "BUSY";
-    case ErrCode::ImuNotReady: return "IMU_NOT_READY";
-    case ErrCode::MotionTimeout: return "MOTION_TIMEOUT";
-    case ErrCode::Unknown: return "UNKNOWN";
+    case ErrCode::BadCmd:
+      return "BAD_CMD";
+    case ErrCode::Busy:
+      return "BUSY";
+    case ErrCode::ImuNotReady:
+      return "IMU_NOT_READY";
+    case ErrCode::MotionTimeout:
+      return "MOTION_TIMEOUT";
+    case ErrCode::Unknown:
+      return "UNKNOWN";
   }
   return "UNKNOWN";
 }
@@ -115,10 +120,14 @@ std::optional<Reply> parse_reply(std::string_view line) {
   if (line.substr(0, 4) == "ERR,") {
     const std::string_view code = line.substr(4);
     Err e{ErrCode::Unknown, std::string(code)};
-    if (code == "BAD_CMD") e.code = ErrCode::BadCmd;
-    else if (code == "BUSY") e.code = ErrCode::Busy;
-    else if (code == "IMU_NOT_READY") e.code = ErrCode::ImuNotReady;
-    else if (code == "MOTION_TIMEOUT") e.code = ErrCode::MotionTimeout;
+    if (code == "BAD_CMD")
+      e.code = ErrCode::BadCmd;
+    else if (code == "BUSY")
+      e.code = ErrCode::Busy;
+    else if (code == "IMU_NOT_READY")
+      e.code = ErrCode::ImuNotReady;
+    else if (code == "MOTION_TIMEOUT")
+      e.code = ErrCode::MotionTimeout;
     return Reply{e};
   }
   if (line.substr(0, 4) == "IMU,") {

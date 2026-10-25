@@ -124,7 +124,8 @@ TEST(VirtualStm, TelemetryHeadingMatchesTheTurnProgress) {
   double last_heading = -1;
   for (const auto& l : lines) {
     const auto r = parse_reply(l);
-    if (r && std::holds_alternative<Telemetry>(*r)) last_heading = std::get<Telemetry>(*r).heading_deg;
+    if (r && std::holds_alternative<Telemetry>(*r))
+      last_heading = std::get<Telemetry>(*r).heading_deg;
   }
   EXPECT_GT(last_heading, 60.0);  // heading was well on its way to 90 deg at the last report
   EXPECT_LE(last_heading, 90.5);

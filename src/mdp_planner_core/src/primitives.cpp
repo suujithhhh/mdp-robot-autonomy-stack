@@ -31,11 +31,16 @@ double normalize_heading(double angle) {
 
 double turn_radius_cm(Cmd c, const PlannerConfig& cfg) {
   switch (c) {
-    case Cmd::FL: return cfg.turn_radius_fl_cm;
-    case Cmd::FR: return cfg.turn_radius_fr_cm;
-    case Cmd::BL: return cfg.turn_radius_bl_cm;
-    case Cmd::BR: return cfg.turn_radius_br_cm;
-    default: return 0.0;
+    case Cmd::FL:
+      return cfg.turn_radius_fl_cm;
+    case Cmd::FR:
+      return cfg.turn_radius_fr_cm;
+    case Cmd::BL:
+      return cfg.turn_radius_bl_cm;
+    case Cmd::BR:
+      return cfg.turn_radius_br_cm;
+    default:
+      return 0.0;
   }
 }
 
@@ -56,12 +61,10 @@ Pose pose_at_fraction(const Pose& pose, Cmd c, int value, double fraction,
   if (fraction == 0.0) return pose;
   if (is_straight(c)) {
     const double d = kDistanceSign[static_cast<int>(c)] * static_cast<double>(value) * fraction;
-    return {pose.x + d * std::cos(pose.heading), pose.y + d * std::sin(pose.heading),
-            pose.heading};
+    return {pose.x + d * std::cos(pose.heading), pose.y + d * std::sin(pose.heading), pose.heading};
   }
   const double theta = (value * kDegToRad) * fraction;
-  const double delta =
-      kSteerSign[static_cast<int>(c)] * kDistanceSign[static_cast<int>(c)] * theta;
+  const double delta = kSteerSign[static_cast<int>(c)] * kDistanceSign[static_cast<int>(c)] * theta;
   const Point ctr = turn_center(pose, c, cfg);
   const double rel_x = pose.x - ctr.x, rel_y = pose.y - ctr.y;
   const double cd = std::cos(delta), sd = std::sin(delta);

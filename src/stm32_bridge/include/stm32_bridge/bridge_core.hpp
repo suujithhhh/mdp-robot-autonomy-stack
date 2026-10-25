@@ -23,19 +23,19 @@
 namespace stm {
 
 enum class Outcome {
-  Ack,          // movement completed
-  Stopped,      // ACK,STOPPED
-  ErrBusy,      // device was not idle
+  Ack,      // movement completed
+  Stopped,  // ACK,STOPPED
+  ErrBusy,  // device was not idle
   ErrBadCmd,
   ErrImuNotReady,
   ErrMotionTimeout,  // firmware deadline expired: pose unknown
   ErrOther,
-  LinkTimeout,       // no terminal reply within the deadline
+  LinkTimeout,  // no terminal reply within the deadline
 };
 const char* outcome_name(Outcome o);
 
 struct CommandResult {
-  std::string wire;     // the command that was sent, e.g. "MOV,FL,90"
+  std::string wire;  // the command that was sent, e.g. "MOV,FL,90"
   Outcome outcome;
   double elapsed_s;
   bool pose_uncertain;  // true once the pose can no longer be trusted
@@ -54,8 +54,8 @@ struct BridgeConfig {
 };
 
 struct Odometry {
-  mdp::Pose pose{};          // integrated from encoder deltas + IMU heading (telemetry, ~10 Hz)
-  double v_cm_s{0.0};        // speed estimated over the last telemetry interval
+  mdp::Pose pose{};    // integrated from encoder deltas + IMU heading (telemetry, ~10 Hz)
+  double v_cm_s{0.0};  // speed estimated over the last telemetry interval
   long telemetry_count{0};
 };
 
@@ -121,8 +121,8 @@ class BridgeCore {
   // remembers how much of the current movement it has already applied.
   long move_applied_left_{0}, move_applied_right_{0};
   long last_tel_ms_{0};
-  bool saw_start_{false};          // MM,EV:START seen for the command in flight
-  double imu_ref_deg_{0.0};        // IMU reading taken at rest, when the heading was initial_
+  bool saw_start_{false};    // MM,EV:START seen for the command in flight
+  double imu_ref_deg_{0.0};  // IMU reading taken at rest, when the heading was initial_
   bool imu_ref_set_{false};
   mdp::Pose initial_;
 

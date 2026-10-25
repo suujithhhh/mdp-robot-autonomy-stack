@@ -23,13 +23,13 @@ class Link {
 
 struct Snapshot {
   int obstacle_id;
-  mdp::Pose target;      // the viewing pose the planner aimed at
-  mdp::Pose commanded;   // dead-reckoned estimate (ACK-based) when the leg finished
-  mdp::Pose odometry;    // telemetry-integrated estimate
+  mdp::Pose target;     // the viewing pose the planner aimed at
+  mdp::Pose commanded;  // dead-reckoned estimate (ACK-based) when the leg finished
+  mdp::Pose odometry;   // telemetry-integrated estimate
 };
 
 struct MissionOptions {
-  int max_retries{1};   // only for ERR,IMU_NOT_READY on a command that never started moving
+  int max_retries{1};  // only for ERR,IMU_NOT_READY on a command that never started moving
   double step_s{0.01};
   double max_wait_s{600.0};  // hard cap so a test can never hang
 };
@@ -38,7 +38,7 @@ struct MissionResult {
   bool completed{false};
   std::size_t commands_done{0};
   std::size_t commands_total{0};
-  stm::Outcome failure{stm::Outcome::Ack};   // meaningful when !completed
+  stm::Outcome failure{stm::Outcome::Ack};  // meaningful when !completed
   std::string failed_wire;
   bool pose_uncertain{false};
   int retries{0};
@@ -54,6 +54,7 @@ struct FlatRoute {
 FlatRoute flatten(const mdp::RouteResult& route);
 
 // Run the route. `route` supplies the snapshot targets; `commands` may be a prefix of it.
-MissionResult run_mission(const mdp::RouteResult& route, Link& link, const MissionOptions& opts = {});
+MissionResult run_mission(const mdp::RouteResult& route, Link& link,
+                          const MissionOptions& opts = {});
 
 }  // namespace mission

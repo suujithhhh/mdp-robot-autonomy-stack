@@ -14,12 +14,18 @@ namespace mdp {
 
 const char* reason_name(FailReason r) {
   switch (r) {
-    case FailReason::None: return "";
-    case FailReason::UnsafeStart: return "unsafe_start";
-    case FailReason::UnsafeGoal: return "unsafe_goal";
-    case FailReason::ExpansionLimit: return "expansion_limit";
-    case FailReason::NoPath: return "no_path";
-    case FailReason::Timeout: return "timeout";
+    case FailReason::None:
+      return "";
+    case FailReason::UnsafeStart:
+      return "unsafe_start";
+    case FailReason::UnsafeGoal:
+      return "unsafe_goal";
+    case FailReason::ExpansionLimit:
+      return "expansion_limit";
+    case FailReason::NoPath:
+      return "no_path";
+    case FailReason::Timeout:
+      return "timeout";
   }
   return "";
 }
@@ -79,9 +85,12 @@ int heading_bin(double heading_rad, int bin_deg) {
 // Duplicate-detection key: quantised position, quantised heading, and the previous command
 // (the per-command cost depends on it).
 std::uint64_t state_key(const Pose& p, int previous_action, const PlannerConfig& cfg) {
-  const std::uint64_t bx = static_cast<std::uint64_t>(position_bin(p.x, cfg.lattice_position_bin_cm) + 32768);
-  const std::uint64_t by = static_cast<std::uint64_t>(position_bin(p.y, cfg.lattice_position_bin_cm) + 32768);
-  const std::uint64_t hb = static_cast<std::uint64_t>(heading_bin(p.heading, cfg.lattice_heading_bin_deg));
+  const std::uint64_t bx =
+      static_cast<std::uint64_t>(position_bin(p.x, cfg.lattice_position_bin_cm) + 32768);
+  const std::uint64_t by =
+      static_cast<std::uint64_t>(position_bin(p.y, cfg.lattice_position_bin_cm) + 32768);
+  const std::uint64_t hb =
+      static_cast<std::uint64_t>(heading_bin(p.heading, cfg.lattice_heading_bin_deg));
   return (bx << 40) | (by << 24) | (hb << 8) | static_cast<std::uint64_t>(previous_action);
 }
 
@@ -94,7 +103,8 @@ bool within_goal_tolerance(const Pose& p, const Pose& goal, const PlannerConfig&
 
 // Admissible lower bound on the remaining cost: max(distance bound, rotation bound) plus the
 // fixed cost of one more turn command if the heading is still outside tolerance.
-double search_heuristic(const Pose& p, const Pose& goal, int previous_action, const PlannerConfig& cfg) {
+double search_heuristic(const Pose& p, const Pose& goal, int previous_action,
+                        const PlannerConfig& cfg) {
   const double position_distance = std::hypot(p.x - goal.x, p.y - goal.y);
   const double distance_part =
       std::max(0.0, position_distance - cfg.lattice_goal_position_tolerance_cm) *
@@ -170,7 +180,8 @@ LatticePlan plan_lattice_path(const Pose& start, const Pose& goal,
   long expansions = 0;
   const bool has_deadline = deadline != Clock::time_point::max();
   while (!open.empty()) {
-    if (expansions >= cfg.lattice_max_expansions) return failure(FailReason::ExpansionLimit, expansions);
+    if (expansions >= cfg.lattice_max_expansions)
+      return failure(FailReason::ExpansionLimit, expansions);
     if (has_deadline && (expansions & 255) == 0 && Clock::now() >= deadline)
       return failure(FailReason::Timeout, expansions);
 
@@ -191,7 +202,8 @@ LatticePlan plan_lattice_path(const Pose& start, const Pose& goal,
       plan.final_pose = node.pose;
       for (int i = idx; pool[i].parent != -1; i = pool[i].parent) {
         const Node& n = pool[i];
-        plan.actions.push_back({static_cast<Cmd>(n.action), n.value, pool[n.parent].pose, n.pose, n.length_cm});
+        plan.actions.push_back(
+            {static_cast<Cmd>(n.action), n.value, pool[n.parent].pose, n.pose, n.length_cm});
       }
       std::reverse(plan.actions.begin(), plan.actions.end());
       for (const auto& a : plan.actions) plan.total_distance_cm += a.length_cm;
@@ -202,8 +214,8 @@ LatticePlan plan_lattice_path(const Pose& start, const Pose& goal,
       const auto end_pose = safe_primitive_end(node.pose, prim.cmd, prim.value, rects, cfg);
       if (!end_pose) continue;
       const double length = primitive_length_cm(prim.cmd, prim.value, cfg);
-      const double edge = edge_cost_cm(prim.cmd, length, cfg) +
-                          command_start_cost_cm(prim.cmd, node.action, cfg);
+      const double edge =
+          edge_cost_cm(prim.cmd, length, cfg) + command_start_cost_cm(prim.cmd, node.action, cfg);
       const double new_g = node.g + edge;
       const int action = static_cast<int>(prim.cmd);
       const std::uint64_t key = state_key(*end_pose, action, cfg);

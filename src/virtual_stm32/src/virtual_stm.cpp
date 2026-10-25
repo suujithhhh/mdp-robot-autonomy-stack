@@ -8,11 +8,11 @@ namespace stm {
 namespace {
 
 constexpr double kCountsPerCm = 75.0;
-constexpr double kTrackCm = 15.0;           // simulator assumption: distance between rear wheels
-constexpr double kTelemetryPeriodS = 0.1;   // 10 Hz
-constexpr double kSubStepS = 0.01;          // the real motion task runs about every 10 ms
-constexpr double kBrakeWindowS = 0.15;      // STOP: brake window while moving
-constexpr double kIdleStopReplyS = 0.025;   // STOP at idle: reply after about 25 ms
+constexpr double kTrackCm = 15.0;          // simulator assumption: distance between rear wheels
+constexpr double kTelemetryPeriodS = 0.1;  // 10 Hz
+constexpr double kSubStepS = 0.01;         // the real motion task runs about every 10 ms
+constexpr double kBrakeWindowS = 0.15;     // STOP: brake window while moving
+constexpr double kIdleStopReplyS = 0.025;  // STOP at idle: reply after about 25 ms
 
 // Durations measured on the robot (algo/config.py of the Python planner).
 double nominal_duration_s(const MoveCmd& m) {
@@ -77,8 +77,10 @@ void VirtualStm::handle_line(const std::string& line) {
     return;
   }
   if (std::holds_alternative<ImuGetCmd>(*cmd)) {
-    if (faults_.imu_fail) emit(Err{ErrCode::ImuNotReady, ""});
-    else emit(ImuReading{reported_heading_deg()});
+    if (faults_.imu_fail)
+      emit(Err{ErrCode::ImuNotReady, ""});
+    else
+      emit(ImuReading{reported_heading_deg()});
     return;
   }
   // Motion commands: refused while moving, braking or while a STOP is outstanding.
@@ -151,13 +153,15 @@ void VirtualStm::tick(double dt) {
 
   if (state_ == State::Moving) {
     if (!faults_.stall) {
-      const double fraction = move_duration_s_ > 0 ? (now_s_ - move_started_s_) / move_duration_s_ : 1.0;
+      const double fraction =
+          move_duration_s_ > 0 ? (now_s_ - move_started_s_) / move_duration_s_ : 1.0;
       update_pose_and_encoders(fraction);
     }
     if (now_s_ >= next_telemetry_s_) {
       next_telemetry_s_ += kTelemetryPeriodS;
-      emit(Telemetry{std::lround((now_s_ - move_started_s_) * 1000.0), left_counts_ - move_left_start_,
-                     right_counts_ - move_right_start_, reported_heading_deg()});
+      emit(Telemetry{std::lround((now_s_ - move_started_s_) * 1000.0),
+                     left_counts_ - move_left_start_, right_counts_ - move_right_start_,
+                     reported_heading_deg()});
     }
     if (!faults_.stall && last_fraction_ >= 1.0) {
       finish_move("OK", Ack{});
@@ -168,7 +172,8 @@ void VirtualStm::tick(double dt) {
     // The running movement is reported ONLY through ACK,STOPPED (its own ACK/ERR is never sent).
     if (now_s_ >= brake_end_s_) {
       const long t_ms = std::lround((now_s_ - move_started_s_) * 1000.0);
-      emit_raw(std::string("MM,EV:END,D:") + mdp::cmd_name(move_.cmd) + ",T:" + std::to_string(t_ms) +
+      emit_raw(std::string("MM,EV:END,D:") + mdp::cmd_name(move_.cmd) +
+               ",T:" + std::to_string(t_ms) +
                ",RESULT:STOPPED,DL:" + std::to_string(left_counts_ - move_left_start_) +
                ",DR:" + std::to_string(right_counts_ - move_right_start_));
       emit(AckStopped{});
