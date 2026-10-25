@@ -23,13 +23,18 @@ CMake 3.26, GoogleTest from the MSYS2 package). Result: **141 / 141 passed**.
    arena; two route-test layouts with an off-arena camera). The code was right in all four cases;
    the expectations were corrected, not the implementation.
 
+## Continuous integration (GitHub Actions, Ubuntu 22.04)
+
+All jobs pass on `main`: build + `ctest` in Release and Debug, the full suite under
+AddressSanitizer + UndefinedBehaviorSanitizer, `clang-format --Werror`, and a ROS 2 Humble
+`colcon build` + `colcon test`. The first CI run failed only the formatting check; the code was
+reformatted with no functional change and the 141 tests were re-run.
+
 ## Not covered / not yet run
 
-* The ROS 2 nodes (`ros2/`) and `virtual_stm32_pty` (Linux pseudo-terminal front end) are written
-  but **have not been compiled or run** in this environment.
-* AddressSanitizer / UBSan are configured in CI but could not be run on the Windows toolchain used
-  here (the MSYS2 GCC build has no sanitizer runtime).
-* `clang-format` / `clang-tidy` have not been run.
-* The GitHub Actions workflow has not been executed (the repository has not been pushed).
+* The ROS 2 nodes (`ros2/`) and `virtual_stm32_pty` (Linux pseudo-terminal front end) **compile**
+  in CI (Ubuntu 22.04, ROS 2 Humble) but have **not been run**: no node has been launched and the
+  pseudo-terminal path has not been exercised.
+* `clang-tidy` is not configured.
 * The simulator tests protocol and driver behaviour, not control-loop quality; nothing here has
   been run against the physical robot.

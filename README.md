@@ -6,9 +6,10 @@ firmware-faithful STM32 simulator, so the whole stack can be developed and teste
 robot. ROS 2 nodes wrap the tested libraries.
 
 > **Honest status.** This is a working prototype. The libraries, the simulator and the
-> end-to-end tests are built and passing (141 GTest cases). The ROS 2 layer, the Linux
-> pseudo-terminal front end, CI and the sanitizer runs are written but **not yet built or run**
-> (development so far was on Windows). See "What is and is not verified".
+> end-to-end tests are built and passing (141 GTest cases), and GitHub Actions CI is green on
+> Ubuntu 22.04 (Release, Debug, AddressSanitizer + UBSan, clang-format, ROS 2 Humble colcon build).
+> The ROS 2 nodes **compile** but have **not been run** on a ROS graph, and nothing has been run on
+> the physical robot. See "What is and is not verified".
 
 ## Architecture
 
@@ -31,7 +32,7 @@ simulated-time test. Details: [`docs/DESIGN.md`](docs/DESIGN.md).
 | `src/virtual_stm32` | Device model + a Linux pseudo-terminal front end |
 | `src/stm32_bridge` | Driver core: protocol state machine, timeouts, odometry |
 | `src/mdp_mission` | Mission executor + in-memory `SimLink` used by the tests |
-| `ros2/` | ROS 2 nodes, launch file (not yet built) |
+| `ros2/` | ROS 2 nodes, launch file (compiles on Humble in CI; not yet run) |
 | `tools/` | Python parity + benchmark harness against the original planner |
 
 ## Build and test (no ROS needed)
@@ -68,9 +69,9 @@ MDP repository — full tables in [`docs/BENCHMARK.md`](docs/BENCHMARK.md), repr
 | Planner core, protocol, simulator, driver, mission executor | Built; 141 GTest cases pass on Windows (MSYS2 GCC 13) |
 | C++ vs Python planner equivalence | Measured leg by leg, see BENCHMARK.md |
 | Fault handling (silence, stall, IMU failure, byte loss, slip, STOP) | Covered by end-to-end tests with the simulator |
-| ROS 2 nodes + launch file | Written, **not compiled** (needs Ubuntu + ROS 2 Humble) |
-| `virtual_stm32_pty` | Written, **not compiled** (Linux only) |
-| GitHub Actions CI (incl. ASan/UBSan, clang-format, colcon) | Written, **never run** |
+| ROS 2 nodes + launch file | **Compile and link on ROS 2 Humble in CI**; never launched or run on a ROS graph |
+| `virtual_stm32_pty` | Compiles on Linux in CI; never run (the pseudo-terminal path is untested) |
+| GitHub Actions CI | **Green**: build + 141 tests (Release, Debug), ASan + UBSan, clang-format, ROS 2 Humble build |
 | clang-tidy | Not configured yet |
 | Behaviour on the physical robot | **Not tested** — the simulator covers protocol and driver logic, not control-loop quality |
 

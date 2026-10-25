@@ -3,8 +3,8 @@
 //
 //   virtual_stm32_pty [--link /tmp/vstm32] [--speed 1.0] [--slip 0.0] [--stall] [--drop 0.0]
 //
-// Linux/macOS only. NOTE: this front end has not been compiled or run in the development
-// environment used so far (Windows); the model it wraps (VirtualStm) is fully unit-tested.
+// Linux/macOS only. NOTE: this front end compiles on Linux in CI but has not been run;
+// the model it wraps (VirtualStm) is fully unit-tested.
 #include <fcntl.h>
 #include <poll.h>
 #include <stdlib.h>

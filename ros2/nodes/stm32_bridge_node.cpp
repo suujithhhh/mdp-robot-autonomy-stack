@@ -1,7 +1,7 @@
 // ROS 2 serial driver for the STM32 (or for virtual_stm32_pty). A thin wrapper: all protocol
 // logic lives in stm32::BridgeCore, which is unit-tested without ROS.
 //
-// UNVERIFIED: this file has not been compiled yet (it needs Ubuntu + ROS 2 Humble); the core it
+// NOT YET RUN: this file compiles on ROS 2 Humble in CI but has not been launched; the core it
 // wraps is covered by the stm32_bridge_tests and mdp_mission_tests suites.
 //
 // Topics

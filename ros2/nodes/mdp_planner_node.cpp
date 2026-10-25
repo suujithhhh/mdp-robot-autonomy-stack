@@ -1,6 +1,6 @@
 // ROS 2 wrapper around the C++ route planner.
 //
-// UNVERIFIED: not compiled yet (needs ROS 2 Humble). The planner itself is covered by the
+// NOT YET RUN: compiles on ROS 2 Humble in CI, not launched. The planner itself is covered by the
 // mdp_planner_core_tests suite and compared against the Python planner with tools/compare.py.
 //
 // Parameters   obstacles ("x,y,face;x,y,face;..." in cm), start_x_cm, start_y_cm, start_yaw_deg,

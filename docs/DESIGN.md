@@ -1,8 +1,8 @@
 # Design document
 
 Status: prototype. Everything in this document marked **[verified]** is covered by an automated
-test or a measurement in this repository; anything marked **[unverified]** is written but has not
-yet been built or run in the environment used so far (see README, "What is and is not verified").
+test or a measurement in this repository; anything marked **[unverified]** has not been run end to end
+(the ROS 2 nodes compile in CI but have never been launched; see README, "What is and is not verified").
 
 ## 1. Problem and goals
 
@@ -160,4 +160,4 @@ incoming lines).
 * End-to-end (GTest, in memory): real planner → mission executor → driver → virtual STM32, with
   and without faults.
 * CI (`.github/workflows/ci.yml`): build + test (Release/Debug), AddressSanitizer + UBSan,
-  clang-format, ROS 2 Humble colcon build. **[unverified]** — the workflow has not been run yet.
+  clang-format, ROS 2 Humble colcon build. **[verified]**: all jobs are green on `main`.

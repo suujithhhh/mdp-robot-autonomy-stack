@@ -2,7 +2,7 @@
 // when the previous one is ACKed. Any other outcome aborts the mission (PROTOCOL.md section 5).
 // It never resends a command.
 //
-// UNVERIFIED: not compiled yet (needs ROS 2 Humble). The same policy, with retry handling, is
+// NOT YET RUN: compiles on ROS 2 Humble in CI, not launched. The same policy, with retry handling, is
 // implemented and tested in mission::run_mission (src/mdp_mission) against the virtual STM32.
 //
 // Service /run_mission (std_srvs/Trigger); topics /planned_commands (in), /stm32/result (in),

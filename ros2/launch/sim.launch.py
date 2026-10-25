@@ -5,7 +5,7 @@
 then, in another terminal:   ros2 service call /plan std_srvs/srv/Trigger
                               ros2 service call /run_mission std_srvs/srv/Trigger
 
-UNVERIFIED: written but not yet run (needs ROS 2 Humble on Linux).
+NOT YET RUN: written, not launched.
 """
 from launch import LaunchDescription
 from launch.actions import ExecuteProcess, TimerAction
