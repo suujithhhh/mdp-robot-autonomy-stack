@@ -1,7 +1,7 @@
 # Test report
 
 Run: `cmake -S . -B build && cmake --build build && ctest --test-dir build` (MSYS2 UCRT64 GCC 13.1,
-CMake 3.26, GoogleTest from the MSYS2 package). Result: **141 / 141 passed**.
+CMake 3.26, GoogleTest from the MSYS2 package). Result: **213 / 213 passed**.
 
 | Suite | Cases | What it covers |
 |---|---|---|
@@ -9,7 +9,8 @@ CMake 3.26, GoogleTest from the MSYS2 package). Result: **141 / 141 passed**.
 | `stm32_protocol_tests` | 21 | Encode/parse round trip, every STOP variant rejected, malformed MOV lines, value limits, 31-char limit, reply classification (terminal vs telemetry), telemetry round trip, `LineFramer` (split reads, CRLF, byte-at-a-time, overflow resync, bounded memory) |
 | `virtual_stm32_tests` | 25 | One ACK per move, ideal end pose, START/END bracketing, BUSY, BAD_CMD, 10 Hz telemetry, encoder counts (75/cm, reverse negative, inner/outer wheel), STOP while moving / idle / duplicate / during STOP, fault injection (stall → MOTION_TIMEOUT, IMU fail, byte loss, slip, IMU bias, seeded noise) |
 | `stm32_bridge_tests` | 26 | One command in flight, ACK/ERR mapping, pose-uncertainty rules, telemetry never a reply, unexpected/garbage lines counted, partial reads, link timeout → confirming STOP and **no resend**, STOP handling, and the driver against the virtual device (odometry vs truth on straights and turns, slip, byte-at-a-time, stall, total silence, STOP mid-move) |
-| `mdp_mission_tests` | 20 | Real planner → executor → driver → virtual STM32: full 3-obstacle mission, every viewing pose within the 3 cm goal tolerance, odometry vs truth, 1-byte reads give the same result, the robot never enters an obstacle while driving, stalled motors, IMU failure + retry budget, total silence, lost command bytes (command sent exactly once), 20 random byte-loss seeds all terminate with a definite outcome, wheel slip, IMU bias, STOP mid-mission |
+| `can_bus_tests` | 59 | CAN 2.0A layer: CRC-15 (catalogue check value 0x059E, zero-remainder property), bit stuffing, frame encode/decode for every DLC, **every single-bit error detected**, arbitration, retransmission, ACK errors, error-passive / bus-off, robot message map (see docs/CAN.md) |
+| `mdp_mission_tests` | 33 | The 20 UART end-to-end tests below plus 13 over a simulated CAN bus (identical mission result, bit-error recovery, dead motor controller, STOP under load). The UART tests: | Real planner → executor → driver → virtual STM32: full 3-obstacle mission, every viewing pose within the 3 cm goal tolerance, odometry vs truth, 1-byte reads give the same result, the robot never enters an obstacle while driving, stalled motors, IMU failure + retry budget, total silence, lost command bytes (command sent exactly once), 20 random byte-loss seeds all terminate with a definite outcome, wheel slip, IMU bias, STOP mid-mission |
 
 ## Defects found by the tests
 
@@ -28,7 +29,7 @@ CMake 3.26, GoogleTest from the MSYS2 package). Result: **141 / 141 passed**.
 All jobs pass on `main`: build + `ctest` in Release and Debug, the full suite under
 AddressSanitizer + UndefinedBehaviorSanitizer, `clang-format --Werror`, and a ROS 2 Humble
 `colcon build` + `colcon test`. The first CI run failed only the formatting check; the code was
-reformatted with no functional change and the 141 tests were re-run.
+reformatted with no functional change and the 213 tests were re-run.
 
 ## Not covered / not yet run
 

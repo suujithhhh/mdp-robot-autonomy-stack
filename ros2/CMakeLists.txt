@@ -30,6 +30,7 @@ include(GoogleTest)
 add_subdirectory(${MDP_CORE_DIR}/mdp_planner_core core/mdp_planner_core)
 add_subdirectory(${MDP_CORE_DIR}/stm32_protocol core/stm32_protocol)
 add_subdirectory(${MDP_CORE_DIR}/virtual_stm32 core/virtual_stm32)
+add_subdirectory(${MDP_CORE_DIR}/can_bus core/can_bus)
 add_subdirectory(${MDP_CORE_DIR}/stm32_bridge core/stm32_bridge)
 add_subdirectory(${MDP_CORE_DIR}/mdp_mission core/mdp_mission)
 

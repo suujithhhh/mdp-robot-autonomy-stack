@@ -2,7 +2,7 @@
 // STM32 in simulated time. Prints a summary and can record the paths for plotting.
 //
 //   mdp_sim_mission [--obs "x,y,face;x,y,face;..."] [--start x,y,heading_deg] [--csv path.csv]
-//                   [--slip 0.05] [--noise 0.01]
+//                   [--slip 0.05] [--noise 0.01] [--can <bit error rate>]
 // The default layout is the A_spread_03 fixture of the MDP planner.
 #include <chrono>
 #include <cstdio>
@@ -12,6 +12,7 @@
 #include <sstream>
 #include <string>
 
+#include "mdp_mission/can_sim_link.hpp"
 #include "mdp_mission/sim_link.hpp"
 
 namespace {
@@ -32,11 +33,47 @@ std::vector<mdp::Obstacle> parse_obstacles(const std::string& spec) {
 
 }  // namespace
 
+template <typename L>
+int drive(L& link, const mdp::RouteResult& route, const std::string& csv_path) {
+  std::ofstream csv;
+  if (!csv_path.empty()) csv.open(csv_path);
+  if (csv) csv << "t,true_x,true_y,true_h,odom_x,odom_y,odom_h\n";
+  link.set_observer([&](double t, const mdp::Pose& truth, const mdp::Pose& odom) {
+    static long n = 0;
+    if (csv && (n++ % 10) == 0)
+      csv << t << ',' << truth.x << ',' << truth.y << ',' << truth.heading << ',' << odom.x << ','
+          << odom.y << ',' << odom.heading << '\n';
+  });
+  link.bridge().send_imu_get(0.0);
+  link.advance(0.1);
+
+  const mission::MissionResult r = mission::run_mission(route, link);
+  std::printf("mission: %s  commands %zu/%zu  simulated time %.1f s  pose_uncertain=%d\n",
+              r.completed ? "COMPLETED" : "ABORTED", r.commands_done, r.commands_total, r.elapsed_s,
+              r.pose_uncertain);
+  if (!r.completed)
+    std::printf("  failure: %s on %s\n", stm::outcome_name(r.failure), r.failed_wire.c_str());
+  for (const auto& s : r.snapshots) {
+    std::printf(
+        "  obstacle %d: target (%.1f, %.1f)  commanded error %.2f cm  odometry error %.2f cm\n",
+        s.obstacle_id, s.target.x, s.target.y,
+        std::hypot(s.commanded.x - s.target.x, s.commanded.y - s.target.y),
+        std::hypot(s.odometry.x - s.target.x, s.odometry.y - s.target.y));
+  }
+  const mdp::Pose truth = link.device().true_pose();
+  std::printf("final: true (%.1f, %.1f)  commanded (%.1f, %.1f)  odometry (%.1f, %.1f)\n", truth.x,
+              truth.y, link.bridge().commanded_pose().x, link.bridge().commanded_pose().y,
+              link.bridge().odometry().pose.x, link.bridge().odometry().pose.y);
+  return r.completed ? 0 : 2;
+}
+
 int main(int argc, char** argv) {
   std::vector<mdp::Obstacle> obstacles = {{1, 30, 100, 'S'}, {2, 100, 20, 'W'}, {3, 130, 50, 'W'}};
   mdp::Pose start{20, 10, mdp::kPi / 2};
   std::string csv_path;
   stm::FaultConfig faults;
+  bool use_can = false;
+  double can_ber = 0.0;
   for (int i = 1; i + 1 < argc; i += 2) {
     const std::string key = argv[i];
     if (key == "--obs")
@@ -45,7 +82,10 @@ int main(int argc, char** argv) {
       csv_path = argv[i + 1];
     else if (key == "--slip")
       faults.slip = std::atof(argv[i + 1]);
-    else if (key == "--noise")
+    else if (key == "--can") {
+      use_can = true;
+      can_ber = std::atof(argv[i + 1]);  // bit error rate, e.g. 0 or 0.0005
+    } else if (key == "--noise")
       faults.encoder_noise = std::atof(argv[i + 1]);
     else if (key == "--start") {
       double x, y, h;
@@ -74,36 +114,23 @@ int main(int argc, char** argv) {
     return 1;
   }
 
-  std::ofstream csv;
-  if (!csv_path.empty()) csv.open(csv_path);
-  if (csv) csv << "t,true_x,true_y,true_h,odom_x,odom_y,odom_h\n";
-
-  mission::SimLink link(start, faults);
-  link.set_observer([&](double t, const mdp::Pose& truth, const mdp::Pose& odom) {
-    static long n = 0;
-    if (csv && (n++ % 10) == 0)
-      csv << t << ',' << truth.x << ',' << truth.y << ',' << truth.heading << ',' << odom.x << ','
-          << odom.y << ',' << odom.heading << '\n';
-  });
-  link.bridge().send_imu_get(0.0);
-  link.advance(0.1);
-
-  const mission::MissionResult r = mission::run_mission(route, link);
-  std::printf("mission: %s  commands %zu/%zu  simulated time %.1f s  pose_uncertain=%d\n",
-              r.completed ? "COMPLETED" : "ABORTED", r.commands_done, r.commands_total, r.elapsed_s,
-              r.pose_uncertain);
-  if (!r.completed)
-    std::printf("  failure: %s on %s\n", stm::outcome_name(r.failure), r.failed_wire.c_str());
-  for (const auto& s : r.snapshots) {
+  if (use_can) {
+    can::Bus::Config bus_cfg;
+    bus_cfg.bit_error_rate = can_ber;
+    mission::CanSimLink link(start, bus_cfg, faults);
+    const int code = drive(link, route, csv_path);
+    const auto& st = link.bus().stats();
     std::printf(
-        "  obstacle %d: target (%.1f, %.1f)  commanded error %.2f cm  odometry error %.2f cm\n",
-        s.obstacle_id, s.target.x, s.target.y,
-        std::hypot(s.commanded.x - s.target.x, s.commanded.y - s.target.y),
-        std::hypot(s.odometry.x - s.target.x, s.odometry.y - s.target.y));
+        "CAN bus: %ld frames delivered, %ld corrupted + retransmitted, %ld ACK errors, %ld "
+        "arbitration losses, utilisation %.2f%% at %.0f kbit/s\n",
+        st.frames_ok, st.frame_errors, st.ack_errors, st.arbitration_losses,
+        100.0 * link.bus().utilisation(), 500.0);
+    std::printf("  host TEC %d (%s), motor ECU TEC %d (%s), undecodable frames %ld\n",
+                link.host_node().tec(), can::node_state_name(link.host_node().state()),
+                link.ecu_node().tec(), can::node_state_name(link.ecu_node().state()),
+                link.decoder().dropped());
+    return code;
   }
-  const mdp::Pose truth = link.device().true_pose();
-  std::printf("final: true (%.1f, %.1f)  commanded (%.1f, %.1f)  odometry (%.1f, %.1f)\n", truth.x,
-              truth.y, link.bridge().commanded_pose().x, link.bridge().commanded_pose().y,
-              link.bridge().odometry().pose.x, link.bridge().odometry().pose.y);
-  return r.completed ? 0 : 2;
+  mission::SimLink link(start, faults);
+  return drive(link, route, csv_path);
 }
